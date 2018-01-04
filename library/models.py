@@ -10,6 +10,7 @@ class Tools(models.Model):
     def __str__(self):
         return self.name
 
+
 class Users(models.Model):
     user_id = models.CharField(max_length=233)
     first_name = models.CharField(max_length=50)
@@ -18,6 +19,3 @@ class Users(models.Model):
 
     def __str__(self):
         return self.full_name
-
-
-
