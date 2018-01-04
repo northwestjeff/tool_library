@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
-class Tools(models.Model):
+class Tool(models.Model):
     tool_id = models.CharField(max_length=233)
     name = models.CharField(max_length=233)
     make = models.CharField(max_length=244)
@@ -11,7 +12,7 @@ class Tools(models.Model):
         return self.name
 
 
-class Users(models.Model):
+class User(models.Model):
     user_id = models.CharField(max_length=233)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)

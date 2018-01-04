@@ -1,8 +1,8 @@
 from django.contrib import admin
-from library.models import Users, Tools
+from library.models import User, Tool
 
-admin.site.register(Users)
-admin.site.register(Tools)
+admin.site.register(User)
+admin.site.register(Tool)
 
 
 # Register your models here.

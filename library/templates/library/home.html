@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Tool Library App</title>
+</head>
+<body>
+<h1>That tool library.</h1>
+<div>
+    Tools:
+    <div>
+        {% for tool in tools %}
+            <h4>#{{ tool.tool_id }}: {{ tool.name }}</h4>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+
+</body>
+</html>
