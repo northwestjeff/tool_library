@@ -1,15 +1,9 @@
-# Dockerfile
+FROM django
 
-# Dockerfile directive instructing base image to build upon
+ADD . /library
 
-FROM python:3-onbuild
+WORKDIR /library
 
-# COPY startup script into known file location in container
-COPY start.sh /start.sh
+RUN pip install -r requirements.txt
 
-# EXPOSE port 8000 to allow communication to/from server
-EXPOSE 8000
-
-# CMD specifcies the command to execute to start the server running.
-CMD ["/start.sh"]
-# done!
+CMD [ "python", "./manage.py runserver 127.0.0.1:8001" ]
