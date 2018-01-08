@@ -13,25 +13,21 @@
     <div>
         {% for tool in tools %}
             <h4>#{{ tool.tool_id }}: {{ tool.name }}</h4>
+            <form method="post" action="{% url 'delete_too' %}">
+                {% csrf_token %}
+                <input type="hidden" value="{{ tool.tool_id }}" name="tool_id_delete">
+                <input type="submit"
+                       value="DELETE item from Library">
+            </form>
         {% endfor %}
 
     </div>
-
-    {#    <div>#}
-    {#        <form method="post">#}
-    {#            {% csrf_token %}#}
-    {#            <label for="team_name">Enter Name:#}
-    {#            </label>#}
-    {#            <input id="team_name" type="text" name="name_field">#}
-    {#            <input type="submit" value="Submit" style="background: yellow">#}
-    {#        </form>#}
-    {#    </div>#}
 
     <div>
 
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ tool_form.as_p }}
+            {{ tool_form.as_table }}
             <input type="submit" value="SUBMIT">
         </form>
     </div>
