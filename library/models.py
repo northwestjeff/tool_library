@@ -14,10 +14,16 @@ class Tool(models.Model):
 
 
 class User(models.Model):
+    def full_name_function(self):
+        return "{} {}".format(self.first_name, self.last_name)
+
     user_id = models.CharField(max_length=233)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    full_name = "{} {}".format(first_name, last_name)
+
+
+
+
 
     def __str__(self):
-        return self.full_name
+        return self.first_name

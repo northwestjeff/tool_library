@@ -17,13 +17,22 @@
 
     </div>
 
+    {#    <div>#}
+    {#        <form method="post">#}
+    {#            {% csrf_token %}#}
+    {#            <label for="team_name">Enter Name:#}
+    {#            </label>#}
+    {#            <input id="team_name" type="text" name="name_field">#}
+    {#            <input type="submit" value="Submit" style="background: yellow">#}
+    {#        </form>#}
+    {#    </div>#}
+
     <div>
-        <form method="post">
+
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="team_name">Enter Name:
-            </label>
-            <input id="team_name" type="text" name="name_field">
-            <input type="submit" value="Submit" style="background: yellow">
+            {{ tool_form.as_p }}
+            <input type="submit" value="SUBMIT">
         </form>
     </div>
 
