@@ -2,23 +2,19 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
 from library.forms import NewToolForm, NewUserForm
-
-
-
 from library.models import User, Tool
-
 
 
 def home(request):
     tools = Tool.objects.all()
     tool_form = NewToolForm(request.POST or None)
-    # todelete = request.POST.getlist('todelete')
-
-    # SAVES NEW TOOL
-    if request.method == "POST":
-        if tool_form.is_valid():
-            loan = tool_form.save(commit=False)
-            loan.save()
+    # # todelete = request.POST.getlist('todelete')
+    #
+    # # SAVES NEW TOOL
+    # if request.method == "POST":
+    #     if tool_form.is_valid():
+    #         loan = tool_form.save(commit=False)
+    #         loan.save()
     context_dict = {
         "tools": tools,
         "tool_form": tool_form
@@ -28,10 +24,22 @@ def home(request):
 
 def add(request):
     if request.method == "POST":
-        if tool_form.is_valid():
-            tool_set = tool_form.save(commit=False)
-            tool_set.save()
-    return HttpResponse('/')
+        tool_id = request.POST['tool_id']
+        name = request.POST['name']
+        make = request.POST['make']
+        type = request.POST['type']
+
+        Tool.objects.create(
+            tool_id=tool_id,
+            name=name,
+            make=make,
+            type=type
+        )
+
+        # if tool_set.is_valid():
+        #     tool_set = tool_set.save(commit=False)
+        #     tool_set.save()
+    return HttpResponseRedirect('')
 
 
 def delete(request):
@@ -64,5 +72,3 @@ def delete(request):
     #     return render(request, 'library/home.html', {"tools": tools})
     #
     #
-
-

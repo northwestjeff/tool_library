@@ -1,5 +1,3 @@
-
-
 const deleteButton = document.querySelectorAll('.delete-button');
 
 // for (i=0; i<deleteButton.length; i++){
@@ -22,6 +20,7 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
 var csrftoken = getCookie('csrftoken');
 
 
@@ -42,6 +41,37 @@ function doDelete(id) {
 
 }
 
-function doAdd() {
+$(document).on('submit', '#new-tool', function (e) {
+    e.preventDefault();
+    console.log(e)
+    $.ajax({
+        type: 'POST',
+        url: '/add/',
+        data: {
+            csrfmiddlewaretoken: csrftoken,
+            tool_id: $('#tool_id').val(),
+            name: $('#name').val(),
+            make: $('#make').val(),
+            type: $('#type').val()
+        }
+    })
 
+});
+
+
+function doAdd(id) {
+    console.log('do add');
+    $.ajax({
+        type: 'POST',
+        url: '/add/',
+        data: {
+            csrfmiddlewaretoken: csrftoken,
+            'tool': id
+        },
+        dataType: 'json',
+        success: function () {
+            console.log("success")
+
+        }
+    })
 }

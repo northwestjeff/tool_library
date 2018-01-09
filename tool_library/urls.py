@@ -20,6 +20,6 @@ from library import views as library_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', library_views.home, name='home'),
-    url(r'^delete/$', library_views.delete, name='delete_tool')
-    url(r'^add/$', library_views.add, name='delete_tool')
+    url(r'^delete/$', library_views.delete, name='delete_tool'),
+    url(r'^add/$', library_views.add, name='add_tool')
 ]
