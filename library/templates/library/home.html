@@ -1,4 +1,4 @@
-{% load static %}
+{% load staticfiles %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,13 +12,15 @@
     Tools:
     <div>
         {% for tool in tools %}
+            <div id="{{ tool.tool_id }}">
             <h4>#{{ tool.tool_id }}: {{ tool.name }}</h4>
-            <form method="post" action="{% url 'delete_too' %}">
+{#            <form method="post" action="{% url 'delete_tool' %}">#}
                 {% csrf_token %}
                 <input type="hidden" value="{{ tool.tool_id }}" name="tool_id_delete">
                 <input type="submit"
-                       value="DELETE item from Library">
-            </form>
+                       value="DELETE item from Library" class="delete-button">
+{#            </form>#}
+            </div>
         {% endfor %}
 
     </div>
@@ -37,4 +39,8 @@
 
 
 </body>
+
+
+<script src="{% static 'library/script/script.js' %}">
+</script>
 </html>
