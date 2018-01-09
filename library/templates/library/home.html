@@ -13,13 +13,13 @@
     <div>
         {% for tool in tools %}
             <div id="{{ tool.tool_id }}">
-            <h4>#{{ tool.tool_id }}: {{ tool.name }}</h4>
-{#            <form method="post" action="{% url 'delete_tool' %}">#}
+                <h4>#{{ tool.tool_id }}: {{ tool.name }}</h4>
                 {% csrf_token %}
                 <input type="hidden" value="{{ tool.tool_id }}" name="tool_id_delete">
-                <input type="submit"
-                       value="DELETE item from Library" class="delete-button">
-{#            </form>#}
+                <input type="button"
+                       value="DELETE item from Library" class="delete-button"
+                       onclick="doDelete({{ tool.tool_id }})"
+                >
             </div>
         {% endfor %}
 
@@ -40,7 +40,7 @@
 
 </body>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="{% static 'library/script/script.js' %}">
 </script>
 </html>

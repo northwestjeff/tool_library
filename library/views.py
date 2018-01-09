@@ -12,7 +12,7 @@ from library.models import User, Tool
 def home(request):
     tools = Tool.objects.all()
     tool_form = NewToolForm(request.POST or None)
-    todelete = request.POST.getlist('todelete')
+    # todelete = request.POST.getlist('todelete')
 
     # SAVES NEW TOOL
     if request.method == "POST":
@@ -26,14 +26,23 @@ def home(request):
     return render(request, 'library/home.html', context_dict)
 
 
+def add(request):
+    if request.method == "POST":
+        if tool_form.is_valid():
+            tool_set = tool_form.save(commit=False)
+            tool_set.save()
+    return HttpResponse('/')
+
+
 def delete(request):
     if request.method == 'POST':
-        tool_id = request.POST.get("tool_id_delete")
+        tool_id = request.POST.get("tool")
         if tool_id:
             # print('hello')
             tool_to_delete = Tool.objects.get(tool_id=tool_id)
             tool_to_delete.delete()
-    return HttpResponseRedirect('/')
+
+    return HttpResponse('/')
 
 
 
