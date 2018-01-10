@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+        <h2>Add New Tool:</h2>
+        <form method="post" enctype="multipart/form-data" id="new-tool">
+            {% csrf_token %}
+            <div class="field">
+                <label for="tool_id">Tool ID#: </label>
+                <input type="text" id="tool_id">
+            </div>
+            <div class="field">
+                <label for="name">Tool Name: </label>
+                <input type="text" id="name">
+            </div>
+            <div class="field">
+                <label for="make">Tool Maker: </label>
+                <input type="text" id="make">
+            </div>
+            <div class="field">
+                <label for="type">Tool Type: </label>
+                <input type="text" id="type">
+            </div>
+
+
+            <input type="submit" value="SUBMIT">
+        </form>
+    </div>
+{% endblock %}
