@@ -1,5 +1,52 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
+<div class="container">
+    <table class="table table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Tool ID #</th>
+            <th scope="col">Description</th>
+            <th scope="col">Parts</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Model</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tool in tools %}
+        <tr>
+            <th scope="row">{{ tool.tool_id }}</th>
+            <th>{{ tool.description }}</th>
+            <th>{{ tool.parts }}</th>
+            <th>{{ tool.brand}}</th>
+            <th>{{ tool.model}}</th>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+
+
+
+
+{#    <div>#}
+{#        {% for tool in tools %}#}
+{#            <div id="{{ tool.tool_id }}">#}
+{#                <h4>#{{ tool.tool_id }}</h4>#}
+{#                {% csrf_token %}#}
+{#                <input type="hidden" value="{{ tool.tool_id }}" name="tool_id_delete">#}
+{#                <input type="button"#}
+{#                       value="DELETE item from Library" class="delete-button"#}
+{#                       onclick="doDelete({{ tool.tool_id }})"#}
+{#                >#}
+{#            </div>#}
+{#        {% endfor %}#}
+{##}
+{#    </div>#}
+
+
 
 {% endblock %}

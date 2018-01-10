@@ -1,13 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
-from library.forms import NewToolForm, NewUserForm
+# from library.forms import NewToolForm, NewUserForm
 from library.models import User, Tool
 
 
 def home(request):
     tools = Tool.objects.all()
-    tool_form = NewToolForm(request.POST or None)
     # # todelete = request.POST.getlist('todelete')
     #
     # # SAVES NEW TOOL
@@ -16,30 +15,42 @@ def home(request):
     #         loan = tool_form.save(commit=False)
     #         loan.save()
     context_dict = {
-        "tools": tools,
-        "tool_form": tool_form
+        "tools": tools
     }
-    return render(request, 'library/home.html', context_dict)
+    return render(request, 'library/home.html', {"tools": tools})
 
 
 def add(request):
     if request.method == "POST":
         tool_id = request.POST['tool_id']
-        name = request.POST['name']
-        make = request.POST['make']
-        type = request.POST['type']
+        description = request.POST['description']
+        parts = request.POST['parts']
+        brand = request.POST['brand']
+        model = request.POST['model']
 
         Tool.objects.create(
             tool_id=tool_id,
-            name=name,
-            make=make,
-            type=type
+            description=description,
+            parts=parts,
+            brand=brand,
+            model=model
         )
 
         # if tool_set.is_valid():
         #     tool_set = tool_set.save(commit=False)
         #     tool_set.save()
     return HttpResponseRedirect('')
+
+def toolShelf(request):
+    tools = Tool.objects.all()
+    return render(request, 'library/toolshelf.html', {"tools": tools})
+
+def newTool(request):
+    tools = Tool.objects.all()
+    return render(request, 'library/newtool.html', {"tools": tools})
+
+def newUser(request):
+    return render(request, 'library/newuser.html', {})
 
 
 def delete(request):

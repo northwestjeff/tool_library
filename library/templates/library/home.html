@@ -1,28 +1,15 @@
 {% extends 'base.html' %}
 
-{#{% load staticfiles %}#}
+{% load static %}
 
 
 {% block content %}
 <h1>That tool library.</h1>
 <div>
     <h2>Tools:</h2>
-    <div>
-        {% for tool in tools %}
-            <div id="{{ tool.tool_id }}">
-                <h4>#{{ tool.tool_id }}: {{ tool.name }}</h4>
-                {% csrf_token %}
-                <input type="hidden" value="{{ tool.tool_id }}" name="tool_id_delete">
-                <input type="button"
-                       value="DELETE item from Library" class="delete-button"
-                       onclick="doDelete({{ tool.tool_id }})"
-                >
-            </div>
-        {% endfor %}
 
-    </div>
     <div style="border: solid 1px black"></div>
-    
+
 
 
 </div>

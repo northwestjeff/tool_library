@@ -43,16 +43,17 @@ function doDelete(id) {
 
 $(document).on('submit', '#new-tool', function (e) {
     e.preventDefault();
-    console.log(e)
+    console.log(e);
     $.ajax({
         type: 'POST',
         url: '/add/',
         data: {
             csrfmiddlewaretoken: csrftoken,
             tool_id: $('#tool_id').val(),
-            name: $('#name').val(),
-            make: $('#make').val(),
-            type: $('#type').val()
+            description: $('#description').val(),
+            parts: $('#parts').val(),
+            brand: $('#brand').val(),
+            model: $('#model').val()
         }
     })
 
@@ -60,7 +61,6 @@ $(document).on('submit', '#new-tool', function (e) {
 
 
 function doAdd(id) {
-    console.log('do add');
     $.ajax({
         type: 'POST',
         url: '/add/',
@@ -75,3 +75,7 @@ function doAdd(id) {
         }
     })
 }
+
+$('.nav-main .dropdown-submenu > a:not(a[href="#"])').on('click', function() {
+    self.location = $(this).attr('href');
+});

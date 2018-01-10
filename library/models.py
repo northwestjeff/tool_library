@@ -5,25 +5,45 @@ from django.core.urlresolvers import reverse
 
 class Tool(models.Model):
     tool_id = models.CharField(max_length=233)
-    name = models.CharField(max_length=233)
-    make = models.CharField(max_length=244)
-    type = models.CharField(max_length=233)
+    description = models.CharField(max_length=233)
+    parts = models.CharField(max_length=233)
+    brand = models.CharField(max_length=244)
+    model = models.CharField(max_length=233)
+    available = models.BooleanField(default=True)
+    borrower = models.CharField(max_length=233, null=True, default=True)  # TODO: LINK TO USERS
 
     def __str__(self):
-        return self.name
+        return self.parts
+
+
+category_list = ["Automotive",
+                 "Paint",
+                 "Yard",
+                 "Woodworking",
+                 "Metalworking"]
+
+
+class ToolCategory(models.Model):
+    category = models.CharField(max_length=255)  # TODO:Link to category list
+
+    def __str__(self):
+        return self.category
 
 
 class User(models.Model):
     def full_name_function(self):
         return "{} {}".format(self.first_name, self.last_name)
-
-    user_id = models.CharField(max_length=233)
+    user_id = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-
-
-
-
+    date_created = models.DateField(auto_now=True)
+    email = models.CharField(max_length=50)
+    phone = models.CharField(max_length=15)
+    address = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    zip = models.CharField(max_length=5)
+    late_tools = models.BooleanField(default=False)
 
     def __str__(self):
         return self.first_name

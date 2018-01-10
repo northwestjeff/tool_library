@@ -1,4 +1,8 @@
 .main {
-    background-color: lightgray;
-    width: 80%;
+
+}
+
+
+.navbar li {
+    list-style: none;
 }
