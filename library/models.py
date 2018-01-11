@@ -10,10 +10,11 @@ class Tool(models.Model):
     brand = models.CharField(max_length=244)
     model = models.CharField(max_length=233)
     available = models.BooleanField(default=True)
-    borrower = models.CharField(max_length=233, null=True, default=True)  # TODO: LINK TO USERS
+    # borrower = models.CharField(max_length=233, null=True, default=True)  # TODO: LINK TO USERS (Done? see line below)
+    borrower = models.ForeignKey(User)
 
     def __str__(self):
-        return self.parts
+        return self.description
 
 
 category_list = ["Automotive",
@@ -36,14 +37,15 @@ class User(models.Model):
     user_id = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    date_created = models.DateField(auto_now=True)
+    date_created = models.DateField()
     email = models.CharField(max_length=50)
-    phone = models.CharField(max_length=15)
-    address = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
+    phone = models.CharField(max_length=15, null=True, blank=True, default=False)
+    address = models.CharField(max_length=100, null=True, blank=True)
+    city = models.CharField(max_length=100, null=True, blank=True)
+    state = models.CharField(max_length=100, null=True, blank=True)
     zip = models.CharField(max_length=5)
     late_tools = models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.first_name
