@@ -4,14 +4,14 @@ from django.core.urlresolvers import reverse
 
 
 class Tool(models.Model):
-    tool_id = models.CharField(max_length=233)
+    tool_id = models.CharField(max_length=233, unique=True)
     description = models.CharField(max_length=233)
     parts = models.CharField(max_length=233)
     brand = models.CharField(max_length=244)
     model = models.CharField(max_length=233)
     available = models.BooleanField(default=True)
-    # borrower = models.CharField(max_length=233, null=True, default=True)  # TODO: LINK TO USERS (Done? see line below)
-    borrower = models.ForeignKey(User)
+    # borrower = models.CharField(max_length=233, null=True, default=True)  # TODO: LINK TO USERS (see line below)
+    # borrower = models.ForeignKey(User, null=True, blank=True)
 
     def __str__(self):
         return self.description
@@ -39,7 +39,7 @@ class User(models.Model):
     last_name = models.CharField(max_length=50)
     date_created = models.DateField()
     email = models.CharField(max_length=50)
-    phone = models.CharField(max_length=15, null=True, blank=True, default=False)
+    phone = models.CharField(max_length=15, null=True, blank=True)
     address = models.CharField(max_length=100, null=True, blank=True)
     city = models.CharField(max_length=100, null=True, blank=True)
     state = models.CharField(max_length=100, null=True, blank=True)

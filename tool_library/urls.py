@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^$', library_views.home, name='home'),
     url(r'^toolshelf/', library_views.toolShelf, name='toolshelf'),
     url(r'^newtool/$', library_views.newTool, name='newtool'),
+    url(r'^edittool/$', library_views.editTools, name='edittools'),
     url(r'^newuser/$', library_views.newUser, name='newuser'),
     url(r'^delete/$', library_views.delete, name='delete_tool'),
     url(r'^add/$', library_views.add, name='add_tool')

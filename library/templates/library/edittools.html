@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% load static %}
-
 {% block content %}
 <div class="container">
     <table class="table table-hover">
@@ -12,23 +10,26 @@
             <th scope="col">Parts</th>
             <th scope="col">Brand</th>
             <th scope="col">Model</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
         </tr>
         </thead>
         <tbody>
         {% for tool in tools %}
-        <tr>
+        <tr id="{{ tool.tool_id }}">
             <th scope="row">{{ tool.tool_id }}</th>
             <th>{{ tool.description }}</th>
             <th>{{ tool.parts }}</th>
             <th>{{ tool.brand}}</th>
             <th>{{ tool.model}}</th>
+            <th><input type="submit" class="edit-tool" style="background-color: blue" value="Edit"></th>
+            <th><input type="submit" class="delete-tool" style="background-color: red" value="Delete" onclick=deleteTool({{ tool.tool_id }})></th>
+
         </tr>
         {% endfor %}
         </tbody>
 
     </table>
 </div>
-
-
 
 {% endblock %}
