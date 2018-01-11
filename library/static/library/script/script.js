@@ -73,10 +73,14 @@ function deleteTool(e) {
     })
 }
 
+function editTool(e) {
+    window.location.href = 'http://localhost:8001/toolupdate.html';
+}
+
 
 $(document).on('submit', '#new-tool', function (e) {
     e.preventDefault();
-    // console.log(e);
+    console.log(e);
     $.ajax({
         type: 'POST',
         url: '/add/',
@@ -88,7 +92,14 @@ $(document).on('submit', '#new-tool', function (e) {
             brand: $('#brand').val(),
             model: $('#model').val()
         },
-        success: function () {
+        success: function (e) {
+            console.log(e)
+            if (!alert(e + ': tool added to tool shelf')) {
+                window.location.reload();
+            }
+        },
+        error: function (e) {
+            console.log(e)
             if (!alert(e + ': tool added to tool shelf')) {
                 window.location.reload();
             }
@@ -97,22 +108,6 @@ $(document).on('submit', '#new-tool', function (e) {
 
 });
 
-
-// function doAdd(id) {
-//     $.ajax({
-//         type: 'POST',
-//         url: '/add/',
-//         data: {
-//             csrfmiddlewaretoken: csrftoken,
-//             'tool': id
-//         },
-//         dataType: 'json',
-//         success: function () {
-//             console.log("success")
-//
-//         }
-//     })
-// }
 
 $('.nav-main .dropdown-submenu > a:not(a[href="#"])').on('click', function () {
     self.location = $(this).attr('href');

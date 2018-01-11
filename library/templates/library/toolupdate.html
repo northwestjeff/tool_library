@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <div>
+        <h2>Add New Tool:</h2>
+        <form method="post" enctype="multipart/form-data" id="new-tool">
+            {% csrf_token %}
+            <div class="field">
+                <label for="tool_id">Tool ID#: </label>
+                <input type="text" id="tool_id" value="{{ tool.tool_id }}">
+            </div>
+            <div class="field">
+                <label for="name">Description </label>
+                <input type="text" id="description" value="{{ tool.description }}">
+            </div>
+            <div class="field">
+                <label for="make">Parts: </label>
+                <input type="text" id="parts" value="{{ tool.parts }}">
+            </div>
+            <div class="field">
+                <label for="type">Brand: </label>
+                <input type="text" id="brand" value="{{ tool.brand }}">
+            </div>
+            <div class="field">
+                <label for="type">Model: </label>
+                <input type="text" id="model" value="{{ tool.model }}">
+            </div>
+
+
+
+            <input type="submit" value="SUBMIT">
+        </form>
+
+
+
+
+{% endblock %}

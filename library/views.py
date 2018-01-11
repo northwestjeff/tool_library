@@ -18,7 +18,6 @@ def add(request):
         brand = request.POST['brand']
         model = request.POST['model']
 
-
         Tool.objects.create(
             tool_id=tool_id,
             description=description,
@@ -30,19 +29,22 @@ def add(request):
 
     return HttpResponseRedirect('')
 
+
 def toolShelf(request):
     tools = Tool.objects.all()
     # tools = []
     return render(request, 'library/toolshelf.html', {"tools": tools})
 
+
 def editTools(request):
     tools = Tool.objects.all()
-    return render(request, 'library/edittools.html', {'tools':tools})
+    return render(request, 'library/edittools.html', {'tools': tools})
 
 
 def newTool(request):
     tools = Tool.objects.all()
     return render(request, 'library/newtool.html', {"tools": tools})
+
 
 def newUser(request):
     return render(request, 'library/newuser.html', {})
@@ -59,7 +61,9 @@ def delete(request):
     return HttpResponse('/')
 
 
-
+def updateTools(request, tool_id):
+    tool = Tool.objects.get(tool_id=tool_id)
+    return render(request, 'library/toolupdate.html', {"tool": tool})
 
 
 
