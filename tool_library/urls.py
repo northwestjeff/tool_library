@@ -20,7 +20,8 @@ from library import views as library_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', library_views.home, name='home'),
-    url(r'^toolshelf/', library_views.toolShelf, name='toolshelf'),
+    url(r'^tools/$', library_views.toolShelf, name='tools'),
+    url(r'^tools/(?P<tool_id>[0-9]+)', library_views.viewTool, name='tools'),
     url(r'^newtool/$', library_views.newTool, name='newtool'),
     url(r'^edittool/$', library_views.editTools, name='edittools'),
     url(r'^toolupdate/$', library_views.updateTools, name='updatetools'),

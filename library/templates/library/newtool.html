@@ -2,34 +2,94 @@
 
 {% block content %}
 
-    <div>
+
+    {#        <form method="post" enctype="multipart/form-data" id="new-tool">#}
+    {#            {% csrf_token %}#}
+    {#            <div class="field">#}
+    {#                <label for="tool_id">Tool ID#: </label>#}
+    {#                <input type="text" id="tool_id">#}
+    {#            </div>#}
+    {#            <div class="field">#}
+    {#                <label for="name">Description </label>#}
+    {#                <input type="text" id="description">#}
+    {#            </div>#}
+    {#            <div class="field">#}
+    {#                <label for="make">Parts: </label>#}
+    {#                <input type="text" id="parts">#}
+    {#            </div>#}
+    {#            <div class="field">#}
+    {#                <label for="type">Brand: </label>#}
+    {#                <input type="text" id="brand">#}
+    {#            </div>#}
+    {#            <div class="field">#}
+    {#                <label for="type">Model: </label>#}
+    {#                <input type="text" id="model">#}
+    {#            </div>#}
+    {##}
+    {##}
+    {#            <input type="submit" value="SUBMIT" disabled>#}
+    {#        </form>#}
+    <div class="container">
         <h2>Add New Tool:</h2>
-        <form method="post" enctype="multipart/form-data" id="new-tool">
-            {% csrf_token %}
-            <div class="field">
-                <label for="tool_id">Tool ID#: </label>
-                <input type="text" id="tool_id">
+        <form id="new-tool" novalidate>
+            <div class="form-group row">
+                <label for="tool_id" class="col-sm-2 col-form-label">Tool ID#: </label>
+                <div class="col-form-10">
+                    <input type="number" class="form-control" id="tool_id" placeholder="tool id">
+                    {# TODO add a calculated id number #}
+                </div>
             </div>
-            <div class="field">
-                <label for="name">Description </label>
-                <input type="text" id="description">
+            <div class="form-group row">
+                <label for="description" class="col-sm-2 col-form-label">Description: </label>
+                <div class="col-form-10">
+                    <input type="text" class="form-control" id="description" placeholder="write description here" required>
+                </div>
+                <div class="invalid-feedback">
+                    Description cannot be blank.
+                </div>
             </div>
-            <div class="field">
-                <label for="make">Parts: </label>
-                <input type="text" id="parts">
-            </div>
-            <div class="field">
-                <label for="type">Brand: </label>
-                <input type="text" id="brand">
-            </div>
-            <div class="field">
-                <label for="type">Model: </label>
-                <input type="text" id="model">
+            <div class="form-group row">
+                <label for="brand" class="col-sm-2 col-form-label">Brand: </label>
+                <div class="col-form-10"><input type="text" class="form-control" id="brand" placeholder="brand">
+                </div>
             </div>
 
+            <div class="form-group row">
+                <label for="parts" class="col-sm-2 col-form-label">Parts: </label>
+                <div class="col-form-10"><input type="text" class="form-control" id="parts" placeholder="parts">
+                </div>
 
-
-            <input type="submit" value="SUBMIT">
+            </div>
+            <div class="form-group row">
+                <label for="model" class="col-sm-2 col-form-label">Model: </label>
+                <div class="col-form-10"><input type="text" class="form-control" id="model" placeholder="model">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-form-10">
+                    <button class="btn btn-primary" type="submit">Submit New Tool</button>
+                </div>
+            </div>
         </form>
+
+
     </div>
+{#    <script>#}
+{#        // Example starter JavaScript for disabling form submissions if there are invalid fields#}
+{#        (function () {#}
+{#            'use strict';#}
+{##}
+{#            window.addEventListener('load', function () {#}
+{#                var form = document.getElementById('needs-validation');#}
+{#                form.addEventListener('submit', function (event) {#}
+{#                    if (form.checkValidity() === false) {#}
+{#                        event.preventDefault();#}
+{#                        event.stopPropagation();#}
+{#                    }#}
+{#                    form.classList.add('was-validated');#}
+{#                }, false);#}
+{#            }, false);#}
+{#        })();#}
+{#    </script>#}
+
 {% endblock %}
