@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-        {{ tool.description }}
+    <div class="container">
+        <div class="card" style="width: 100%;">
+            <img class="card-img-top" src="http://lorempixel.com/400/200" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">#{{ tool.tool_id }}: {{ tool.brand }} {{ tool.model }}</h5>
+                <p class="card-text">{{ tool.description }}</p>
+                <a href="#" class="btn btn-primary">Check Out Tool</a>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
