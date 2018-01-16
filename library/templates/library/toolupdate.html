@@ -3,11 +3,11 @@
 {% block content %}
  <div>
         <h2>Update Tool Info:</h2>
-        <form method="post" enctype="multipart/form-data" id="new-tool">
+        <form method="post" enctype="multipart/form-data" id="update-tool">
             {% csrf_token %}
             <div class="field">
-                <label for="tool_id">Tool ID#: </label>
-                {{ tool.tool_id }}
+                <label for="tool_id" >Tool ID#: </label>
+                <h3 id="{{ tool.tool_id }}">{{ tool.tool_id }}</h3>
             </div>
             <div class="field">
                 <label for="name">Description </label>
@@ -25,7 +25,7 @@
                 <label for="type">Model: </label>
                 <input type="text" id="model" value="{{ tool.model }}">
             </div>
-            <input type="submit" value="SUBMIT" id="update-tool">
+            <input type="submit" value="SUBMIT">
         </form>
 
 

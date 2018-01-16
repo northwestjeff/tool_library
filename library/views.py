@@ -14,6 +14,7 @@ def home(request):
 
 def add(request):
     if request.method == "POST":
+        tool_id = request.POST['tool_id']
         description = request.POST['description']
         parts = request.POST['parts']
         brand = request.POST['brand']
@@ -32,14 +33,22 @@ def add(request):
 
 def update(request):
     if request.method == "POST":
+        tool_id = request.POST['tool_id']
         description = request.POST['description']
         parts = request.POST['parts']
         brand = request.POST['brand']
         model = request.POST['model']
 
-        Tool.objects.update(
-            
-        )
+        tool = Tool.objects.get(tool_id=tool_id)
+        tool.description = description
+        tool.parts = parts
+        tool.brand = brand
+        tool.model = model
+        tool.save()
+
+
+    tools = Tool.objects.all()
+    return render(request, 'library/home.html', {"tools": tools})
 
 
 def toolShelf(request):

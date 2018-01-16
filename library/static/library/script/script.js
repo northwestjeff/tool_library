@@ -92,9 +92,10 @@ function deleteTool(e) {
 //     // window.location.href = 'http://localhost:8001/toolupdate.html';
 // }
 
-    console.log(e);
+// console.log(e);
 // NEW TOOL
-$(document).on('submit', '#new-tool', function (e) {
+$('#new-tool').submit(function (e) {
+    console.log("new tool");
     e.preventDefault();
     $.ajax({
         type: 'POST',
@@ -108,45 +109,43 @@ $(document).on('submit', '#new-tool', function (e) {
             model: $('#model').val()
         },
         success: function (e) {
-            console.log(e)
-            if (!alert(e + ': tool added to tool shelf')) {
+            console.log(e);
+            if (!alert(e + ': SUCCESS tool added to tool shelf')) {
                 window.location.reload();
             }
         },
         error: function (e) {
-            console.log(e)
-            if (!alert(e + ': tool added to tool shelf')) {
+            console.log(e);
+            if (!alert(e + ': FAIL tool added to tool shelf')) {
                 window.location.reload();
             }
         }
     })
 
 });
+
+
 // UPDATE TOOL
-$(document).on('submit', '#update-tool', function (e) {
+$('#update-tool').submit(function (e) {
     e.preventDefault();
+    console.log(description.value)
+    // console.log($('#update-tool').serialize())
     $.ajax({
         type: 'POST',
-        url: '/add/',
+        url: '/update/',
         data: {
             csrfmiddlewaretoken: csrftoken,
-            description: $('#description').val(),
-            parts: $('#parts').val(),
-            brand: $('#brand').val(),
-            model: $('#model').val()
+            tool_id: $('h3')[0].id,
+            description: description.value,
+            parts: parts.value,
+            brand: brand.value,
+            model: model.value,
         },
         success: function (e) {
             console.log(e)
-            if (!alert(e + ': tool added to tool shelf')) {
-                window.location.reload();
-            }
-        },
-        error: function (e) {
-            console.log(e)
-            if (!alert(e + ': tool added to tool shelf')) {
-                window.location.reload();
-            }
         }
+
+
     })
 
 });

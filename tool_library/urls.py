@@ -27,5 +27,7 @@ urlpatterns = [
     url(r'^toolupdate/(?P<tool_id>[0-9]+)', library_views.updateTool, name='updatetools'),
     url(r'^newuser/$', library_views.newUser, name='newuser'),
     url(r'^delete/$', library_views.delete, name='delete_tool'),
-    url(r'^add/$', library_views.add, name='add_tool')
+    url(r'^add/$', library_views.add, name='add_tool'),
+    url(r'^update/$', library_views.update, name='update')
+
 ]
