@@ -73,3 +73,5 @@ class User(models.Model):
 #
 # class Comment(models.Model):
 #
+
+# class borrowingHistory(models.Model):

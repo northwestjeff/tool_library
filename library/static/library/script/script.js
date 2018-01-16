@@ -73,20 +73,63 @@ function deleteTool(e) {
     })
 }
 
-function editTool(e) {
-    window.location.href = 'http://localhost:8001/toolupdate.html';
-}
+// function editTool(e) {
+//     console.log(e)
+//     $.ajax({
+//         type: 'POST',
+//         url: '/toolupdate/',
+//         data: {
+//             csrfmiddlewaretoken: csrftoken,
+//             tool_id: e
+//         },
+//         success: function () {
+//
+//             // if (!alert(e + ': Tool Deleted')) {
+//             //     window.location.reload();
+//             }
+//
+//     })
+//     // window.location.href = 'http://localhost:8001/toolupdate.html';
+// }
 
-
+    console.log(e);
+// NEW TOOL
 $(document).on('submit', '#new-tool', function (e) {
     e.preventDefault();
-    console.log(e);
     $.ajax({
         type: 'POST',
         url: '/add/',
         data: {
             csrfmiddlewaretoken: csrftoken,
             tool_id: $('#tool_id').val(),
+            description: $('#description').val(),
+            parts: $('#parts').val(),
+            brand: $('#brand').val(),
+            model: $('#model').val()
+        },
+        success: function (e) {
+            console.log(e)
+            if (!alert(e + ': tool added to tool shelf')) {
+                window.location.reload();
+            }
+        },
+        error: function (e) {
+            console.log(e)
+            if (!alert(e + ': tool added to tool shelf')) {
+                window.location.reload();
+            }
+        }
+    })
+
+});
+// UPDATE TOOL
+$(document).on('submit', '#update-tool', function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '/add/',
+        data: {
+            csrfmiddlewaretoken: csrftoken,
             description: $('#description').val(),
             parts: $('#parts').val(),
             brand: $('#brand').val(),

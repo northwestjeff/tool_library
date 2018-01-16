@@ -2,12 +2,12 @@
 
 {% block content %}
  <div>
-        <h2>Add New Tool:</h2>
+        <h2>Update Tool Info:</h2>
         <form method="post" enctype="multipart/form-data" id="new-tool">
             {% csrf_token %}
             <div class="field">
                 <label for="tool_id">Tool ID#: </label>
-                <input type="text" id="tool_id" value="{{ tool.tool_id }}">
+                {{ tool.tool_id }}
             </div>
             <div class="field">
                 <label for="name">Description </label>
@@ -25,10 +25,7 @@
                 <label for="type">Model: </label>
                 <input type="text" id="model" value="{{ tool.model }}">
             </div>
-
-
-
-            <input type="submit" value="SUBMIT">
+            <input type="submit" value="SUBMIT" id="update-tool">
         </form>
 
 

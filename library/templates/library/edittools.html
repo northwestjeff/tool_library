@@ -22,7 +22,8 @@
             <th>{{ tool.parts }}</th>
             <th>{{ tool.brand}}</th>
             <th>{{ tool.model}}</th>
-            <th><input type="submit" class="edit-tool" style="background-color: blue" value="Edit" onclick=updateTool({{ tool.tool_id }})></th>
+{#            <th><input type="submit" class="edit-tool" style="background-color: blue" value="Edit" onclick=editTool({{ tool.tool_id }})></th>#}
+            <th><a href="/toolupdate/{{ tool.tool_id }}/"><input type="submit" class="edit-tool" style="background-color: blue" value="Edit"></a></th>
             <th><input type="submit" class="delete-tool" style="background-color: red" value="Delete" onclick=deleteTool({{ tool.tool_id }})></th>
 
         </tr>

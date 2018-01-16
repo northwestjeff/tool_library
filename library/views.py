@@ -14,7 +14,6 @@ def home(request):
 
 def add(request):
     if request.method == "POST":
-        tool_id = request.POST['tool_id']
         description = request.POST['description']
         parts = request.POST['parts']
         brand = request.POST['brand']
@@ -30,6 +29,18 @@ def add(request):
         )
 
     return HttpResponseRedirect('')
+
+def update(request):
+    if request.method == "POST":
+        description = request.POST['description']
+        parts = request.POST['parts']
+        brand = request.POST['brand']
+        model = request.POST['model']
+
+        Tool.objects.update(
+            
+        )
+
 
 def toolShelf(request):
     tools = Tool.objects.all()
@@ -61,7 +72,8 @@ def viewTool(request, tool_id):
     tool = Tool.objects.get(tool_id=tool_id)
     return render(request, 'library/tool.html', {"tool": tool})
 
-def updateTools(request, tool_id):
+def updateTool(request, tool_id):
+    # tool = request.POST.get("tool_id")
     tool = Tool.objects.get(tool_id=tool_id)
     return render(request, 'library/toolupdate.html', {"tool": tool})
 
