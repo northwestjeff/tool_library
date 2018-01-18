@@ -70,8 +70,15 @@ class User(models.Model):
     def __str__(self):
         return self.first_name
 
-#
-# class Comment(models.Model):
-#
 
-# class borrowingHistory(models.Model):
+class Comment(models.Model):
+    user = models.ForeignKey(User)
+    tool = models.ForeignKey(Tool)
+    comment = models.TextField(max_length=288, blank=True, null=True)
+    date = models.DateField()
+
+class borrowingHistory(models.Model):
+    user = models.ForeignKey(User)
+    tool = models.ForeignKey(Tool)
+    date_checked_out = models.DateField()
+    date_returned = models.DateField()

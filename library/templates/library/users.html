@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <table class="table table-hover">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">User ID #</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Zip</th>
+                <th scope="col">No. Current Tools</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <th scope="row"><a href="/users/{{ user.id }}">{{ user.id }}</th>
+                    <th>{{ user.first_name }} {{ user.last_name }}</th>
+                    <th>{{ user.email }}</th>
+                    <th>{{ user.zip }}</th>
+                <th>null</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}

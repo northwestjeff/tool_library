@@ -73,6 +73,15 @@ def newUserForm(request):
     return render(request, 'library/newuser.html', {})
 
 
+def adminViewUser(request):
+    users = User.objects.all()
+    return render(request, 'library/users.html', {"users": users})
+
+def viewUser(request, id):
+    user = User.objects.get(id=id)
+    return render(request, 'library/user_page.html', {"user": user})
+
+
 def delete(request):
     if request.method == 'POST':
         tool_id = request.POST.get("tool_id")
@@ -80,7 +89,6 @@ def delete(request):
             # print('hello')
             tool_to_delete = Tool.objects.get(tool_id=tool_id)
             tool_to_delete.delete()
-
     return HttpResponse('/')
 
 
