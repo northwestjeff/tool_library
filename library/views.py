@@ -7,10 +7,10 @@ from django.urls import reverse
 from library.models import User, Tool
 
 
-
 def home(request):
     tools = Tool.objects.all()
     return render(request, 'library/home.html', {"tools": tools})
+
 
 def add(request):
     if request.method == "POST":
@@ -31,6 +31,7 @@ def add(request):
 
     return HttpResponseRedirect('')
 
+
 def update(request):
     if request.method == "POST":
         tool_id = request.POST['tool_id']
@@ -38,14 +39,15 @@ def update(request):
         parts = request.POST['parts']
         brand = request.POST['brand']
         model = request.POST['model']
-
-        tool = Tool.objects.get(tool_id=tool_id)
-        tool.description = description
-        tool.parts = parts
-        tool.brand = brand
-        tool.model = model
-        tool.save()
-
+        try:
+            tool = Tool.objects.get(tool_id=tool_id)
+            tool.description = description
+            tool.parts = parts
+            tool.brand = brand
+            tool.model = model
+            tool.save()
+        except:
+            return render(request, 'library/home.html', status=500)
 
     tools = Tool.objects.all()
     return render(request, 'library/home.html', {"tools": tools})
@@ -56,16 +58,20 @@ def toolShelf(request):
     # tools = []
     return render(request, 'library/tools.html', {"tools": tools})
 
+
 def editTools(request):
     tools = Tool.objects.all()
     return render(request, 'library/edittools.html', {'tools': tools})
+
 
 def newTool(request):
     tools = Tool.objects.all()
     return render(request, 'library/newtool.html', {"tools": tools})
 
-def newUser(request):
+
+def newUserForm(request):
     return render(request, 'library/newuser.html', {})
+
 
 def delete(request):
     if request.method == 'POST':
@@ -77,9 +83,11 @@ def delete(request):
 
     return HttpResponse('/')
 
+
 def viewTool(request, tool_id):
     tool = Tool.objects.get(tool_id=tool_id)
     return render(request, 'library/tool.html', {"tool": tool})
+
 
 def updateTool(request, tool_id):
     # tool = request.POST.get("tool_id")
