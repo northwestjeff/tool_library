@@ -21,15 +21,16 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', library_views.home, name='home'),
     url(r'^tools/$', library_views.toolShelf, name='tools'),
-    url(r'^tools/(?P<tool_id>[0-9]+)', library_views.viewTool, name='tools'),
+    url(r'^tools/(?P<tool_id>[0-9]+)', library_views.viewTool, name='viewtools'),
     url(r'^newtool/$', library_views.newTool, name='newtool'),
     url(r'^edittool/$', library_views.editTools, name='edittools'),
     url(r'^toolupdate/(?P<tool_id>[0-9]+)', library_views.updateTool, name='updatetools'),
-    url(r'^users/$', library_views.adminViewUser, name='tools'),
-    url(r'^users/(?P<id>[0-9]+)', library_views.viewUser, name='tools'),
+    url(r'^users/$', library_views.adminViewUser, name='adminviewuser'),
+    url(r'^users/(?P<id>[0-9]+)', library_views.viewUser, name='viewuser'),
     url(r'^newuser/$', library_views.newUserForm, name='newuserform'),
     url(r'^delete/$', library_views.delete, name='delete_tool'),
     url(r'^add/$', library_views.add, name='add_tool'),
-    url(r'^update/$', library_views.update, name='update')
+    url(r'^update/$', library_views.update, name='update'),
+    url(r'^checkout/$', library_views.checkoutTool, name='checkout'),
 
 ]

@@ -1,7 +1,7 @@
 from django.contrib import admin
-from library.models import User, Tool
+from library.models import Borrower, Tool
 
-admin.site.register(User)
+admin.site.register(Borrower)
 admin.site.register(Tool)
 
 

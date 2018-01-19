@@ -23,38 +23,6 @@ function getCookie(name) {
 
 var csrftoken = getCookie('csrftoken');
 
-
-// function doDelete(id) {
-//     $.ajax({
-//         type: 'POST',
-//         url: '/delete/',
-//         data: {
-//             csrfmiddlewaretoken: csrftoken,
-//             'tool': id
-//         },
-//         dataType: 'json',
-//         success: function () {
-//             console.log(id)
-//
-//         }
-//     })
-//
-// }
-
-// $("input.delete-tool").on('click', function (e) {
-//     e.preventDefault();
-//     console.log(this.parentNode.parentNode.id);
-//     // $.ajax({
-//     //     type: 'POST',
-//     //     url: '/delete/',
-//     //     data: {
-//     //         csrfmiddlewaretoken: csrftoken,
-//     //         tool_id: $('#tool_id').val(),
-//     //     }
-//     // })
-//
-// });
-
 function deleteTool(e) {
     console.log(e);
     $.ajax({
@@ -73,11 +41,33 @@ function deleteTool(e) {
     })
 }
 
-$('#check-out-tool-to-user-form').click(function (e) {
+$('#check-out-tool-to-user-form').submit(function (e) {
+    /*
+    Collects the User ID and the Tool ID and passes them to a views.py function
+    that adds the Tool to the User account and marks the tool as unavailable
+     */
     e.preventDefault();
-    const submitButton = $('#check-out-submit-button');
-    console.log(submitButton)
-})
+    // const submitButton = $('#check-out-submit-button');
+    const borrower_id = $('#chooseBorrower').val();
+    const tool_id = $('div.card-body')[0].id;
+    console.log(borrower_id);
+    console.log(tool_id);
+    $.ajax({
+        type: 'POST',
+        url: '/checkout/',
+        data:{
+            csrfmiddlewaretoken: csrftoken,
+            tool_id: tool_id,
+            user: borrower_id
+        },
+        success: function () {
+            alert("Tool ID: {} / Borrower ID: {}".format(tool_id, borrower_id))
+        },
+        error: function () {
+            alert("Checkout fail")
+        }
+    })
+});
 
 
 

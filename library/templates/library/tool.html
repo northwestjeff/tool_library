@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card" style="width: 50%;">
             <img class="card-img-top" src="http://lorempixel.com/400/200" alt="Card image cap">
-            <div class="card-body">
+            <div class="card-body" id="{{ tool.tool_id }}">
                 <h5 class="card-title">#{{ tool.tool_id }}: {{ tool.brand }} {{ tool.model }}</h5>
                 <p class="card-text">{{ tool.description }}</p>
                 <button class="btn btn-primary" id="check-out-btn">Check Out Tool</button>
@@ -13,18 +13,16 @@
 
         <form id="check-out-tool-to-user-form" style="display: none">
             <div class="form-group col-md-4">
-                <label for="inputState">Select a Borrower</label>
-                <select id="inputState" class="form-control">
+                <label for="chooseBorrower">Select a Borrower</label>
+                <select id="chooseBorrower" class="form-control">
                     <option selected>Choose...</option>
                     {% for user in users %}
-                        <option value="{{ user.id }}">#{{ user.id }}: {{ user.first_name }} {{ user.last_name }}</option>
+                        <option value="{{ user.user_id }}">#{{ user.user_id }}: {{ user.first_name }} {{ user.last_name }}</option>
                     {% endfor %}
                 </select>
             </div>
             <button type="submit" class="btn-primary btn" id="check-out-submit-button">Check Out</button>
         </form>
-
-
     </div>
 
 
