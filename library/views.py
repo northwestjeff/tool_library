@@ -109,10 +109,10 @@ def checkoutTool(request):
         tool = Tool.objects.get(tool_id=tool_id)
         user_id = request.POST.get("user")
         user = Borrower.objects.get(user_id=user_id)
-
         tool.available = False
-        tool.user = user
-    return "string"
+        tool.user_id = user
+        tool.save()
+    return render(request, 'library/home.html', {})
 
 
 

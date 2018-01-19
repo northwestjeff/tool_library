@@ -61,7 +61,7 @@ $('#check-out-tool-to-user-form').submit(function (e) {
             user: borrower_id
         },
         success: function () {
-            alert("Tool ID: {} / Borrower ID: {}".format(tool_id, borrower_id))
+            alert("success" )
         },
         error: function () {
             alert("Checkout fail")
@@ -69,6 +69,7 @@ $('#check-out-tool-to-user-form').submit(function (e) {
     })
 });
 
+if ()
 
 
 $('#check-out-btn').click(function () {
