@@ -73,6 +73,23 @@ function deleteTool(e) {
     })
 }
 
+$('#check-out-tool-to-user-form').click(function (e) {
+    e.preventDefault();
+    const submitButton = $('#check-out-submit-button');
+    console.log(submitButton)
+})
+
+
+
+$('#check-out-btn').click(function () {
+    const formElement = $('#check-out-tool-to-user-form')[0].style;
+    if (formElement.display === 'none') {
+        formElement.display = 'block'
+    } else {
+        formElement.display = 'none'
+    }
+})
+
 // function editTool(e) {
 //     console.log(e)
 //     $.ajax({
@@ -161,7 +178,7 @@ $('#update-tool').submit(function (e) {
             alert("tool updated " + data)
         },
         error: function (xhr, status) {
-            alert('ajax error = '+ xhr.statusText)
+            alert('ajax error = ' + xhr.statusText)
         }
     })
 });

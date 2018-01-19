@@ -19,16 +19,12 @@ def add(request):
         parts = request.POST['parts']
         brand = request.POST['brand']
         model = request.POST['model']
-
         Tool.objects.create(
             tool_id=tool_id,
             description=description,
             parts=parts,
             brand=brand,
-            model=model,
-
-        )
-
+            model=model)
     return HttpResponseRedirect('')
 
 
@@ -77,6 +73,7 @@ def adminViewUser(request):
     users = User.objects.all()
     return render(request, 'library/users.html', {"users": users})
 
+
 def viewUser(request, id):
     user = User.objects.get(id=id)
     return render(request, 'library/user_page.html', {"user": user})
@@ -94,7 +91,10 @@ def delete(request):
 
 def viewTool(request, tool_id):
     tool = Tool.objects.get(tool_id=tool_id)
-    return render(request, 'library/tool.html', {"tool": tool})
+    users = User.objects.all()
+    return render(request, 'library/tool.html', {"tool": tool,
+                                                 "users": users
+                                                 })
 
 
 def updateTool(request, tool_id):

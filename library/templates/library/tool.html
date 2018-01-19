@@ -2,14 +2,42 @@
 
 {% block content %}
     <div class="container">
-        <div class="card" style="width: 100%;">
+        <div class="card" style="width: 50%;">
             <img class="card-img-top" src="http://lorempixel.com/400/200" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">#{{ tool.tool_id }}: {{ tool.brand }} {{ tool.model }}</h5>
                 <p class="card-text">{{ tool.description }}</p>
-                <a href="#" class="btn btn-primary">Check Out Tool</a>
+                <button class="btn btn-primary" id="check-out-btn">Check Out Tool</button>
             </div>
         </div>
+
+        <form id="check-out-tool-to-user-form" style="display: none">
+            <div class="form-group col-md-4">
+                <label for="inputState">Select a Borrower</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    {% for user in users %}
+                        <option value="{{ user.id }}">#{{ user.id }}: {{ user.first_name }} {{ user.last_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn-primary btn" id="check-out-submit-button">Check Out</button>
+        </form>
+
+
     </div>
+
+
+    {#    <form class="form-inline">#}
+    {#        <div class="form-group mb-2">#}
+    {#            <label for="staticEmail2" class="sr-only">Email</label>#}
+    {#            <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">#}
+    {#        </div>#}
+    {#        <div class="form-group mx-sm-3 mb-2">#}
+    {#            <label for="inputPassword2" class="sr-only">Password</label>#}
+    {#            <input type="password" class="form-control" id="inputPassword2" placeholder="Password">#}
+    {#        </div>#}
+    {#        <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>#}
+    {#    </form>#}
 
 {% endblock %}

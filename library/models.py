@@ -6,24 +6,33 @@ from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 
-
-def validateToolId(value):
-    if len(value) != 5:
-        raise ValidationError(
-            _('Tool IDs must be exactly 5 numbers')
-        )
+# def validateToolId(value):
+#     if len(value) != 5:
+#         raise ValidationError(
+#             _('Tool IDs must be exactly 5 numbers')
+#         )
+category_list = (
+    ("Automotive", "automotive"),
+     ("Paint", "paint"),
+     ("Yard", "yard"),
+     ("Woodworking", 'woodworking'),
+     ("Metalworking", "metalworking"))
 
 
 class Tool(models.Model):
-    tool_id = models.IntegerField(unique=True, validators=[MaxLengthValidator(5), MinLengthValidator(5)])  # TODO need to keep this to five numbers
+    tool_id = models.IntegerField(unique=True, validators=[MaxLengthValidator(5), MinLengthValidator(
+        5)])  # TODO need to keep this to five numbers
     description = models.CharField(max_length=144)
     parts = models.CharField(max_length=144)
     brand = models.CharField(max_length=144)
     model = models.CharField(max_length=144)
     available = models.BooleanField(default=True)
+    user = models.ForeignKey(User, null=True, blank=True)
+    # borrower = models.ForeignKey(User, null=True, blank=True)
+    category = models.CharField(choices=category_list, null=True, blank=True, max_length=200)
+
     # slug = models.SlugField()
-    # # borrower = models.CharField(max_length=233, null=True, default=True)  # TODO: LINK TO USERS (see line below)
-    # # borrower = models.ForeignKey(User, null=True, blank=True)
+    # borrower = models.CharField(max_length=233, null=True, default=True)  # TODO: LINK TO USERS (see line below)
     #
     # # def createSlug(self):
     # #     self.slug = self.brand.lower() + "-" + self.model.lower() + "-" + self.tool_id
@@ -33,15 +42,8 @@ class Tool(models.Model):
     #     self.string = slugify(str(self.tool_id) + self.brand)
     #     super(Tool, self).save(*args, **kwargs)
     #
-    # def __str__(self):
-    #     return self.description
-
-
-category_list = ["Automotive",
-                 "Paint",
-                 "Yard",
-                 "Woodworking",
-                 "Metalworking"]
+    def __str__(self):
+        return self.description
 
 
 class ToolCategory(models.Model):
@@ -76,6 +78,7 @@ class Comment(models.Model):
     tool = models.ForeignKey(Tool)
     comment = models.TextField(max_length=288, blank=True, null=True)
     date = models.DateField()
+
 
 class borrowingHistory(models.Model):
     user = models.ForeignKey(User)
