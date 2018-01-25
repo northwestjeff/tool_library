@@ -1,8 +1,4 @@
-const deleteButton = document.querySelectorAll('.delete-button');
-
-// for (i=0; i<deleteButton.length; i++){
-//     deleteButton[i].addEventListener('click', delete_ajax)
-// }
+// const deleteButton = document.querySelectorAll('.delete-button');
 
 
 function getCookie(name) {
@@ -69,7 +65,6 @@ $('#check-out-tool-to-user-form').submit(function (e) {
     })
 });
 
-if ()
 
 
 $('#check-out-btn').click(function () {
@@ -79,7 +74,7 @@ $('#check-out-btn').click(function () {
     } else {
         formElement.display = 'none'
     }
-})
+});
 
 // function editTool(e) {
 //     console.log(e)
@@ -110,7 +105,7 @@ $('#new-user').submit(function (e) {
             first_name: $('#first_name').val(),
             last_name: $('#last_name').val(),
             email: $('#email').val(),
-            address: $('#address').val(),
+            // address: $('#address').val(),
             zip: $('#zip').val()
         },
         success: function (e) {

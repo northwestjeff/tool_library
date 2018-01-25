@@ -1,16 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.template.defaultfilters import slugify
-from django.core.urlresolvers import reverse
-from django.utils.translation import gettext_lazy as _
-from django.core.exceptions import ValidationError
-from django.core.validators import MinLengthValidator, MaxLengthValidator
+from django.contrib.auth.models import User, AbstractUser
 
-# def validateToolId(value):
-#     if len(value) != 5:
-#         raise ValidationError(
-#             _('Tool IDs must be exactly 5 numbers')
-#         )
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+
 category_list = (
     ("Automotive", "automotive"),
     ("Paint", "paint"),
@@ -18,25 +12,45 @@ category_list = (
     ("Woodworking", 'woodworking'),
     ("Metalworking", "metalworking"))
 
+# class Profile(models.Model):
+#     user = models.OneToOneField(User)
+#     bio = models.TextField(blank=True)
+#     location = models.CharField(max_length=100)
+#     birth_date = models.DateField(null=True, blank=True)
 
-class Borrower(models.Model):
-    def full_name_function(self):
-        return "{} {}".format(self.first_name, self.last_name)
+# from django.db import models
+# from django.contrib.auth.models import AbstractUser
+#
+# class User(AbstractUser):
+#     bio = models.TextField(max_length=500, blank=True)
+#     location = models.CharField(max_length=30, blank=True)
+#     birth_date = models.DateField(null=True, blank=True)
 
-    user_id = models.CharField(max_length=50)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    date_created = models.DateField()
+class User(AbstractUser):
+    is_member = models.BooleanField(default=True)
+    # is_staff = models.BooleanField(default=False)
+    date_created = models.DateField(null=True)
     email = models.CharField(max_length=50)
-    phone = models.CharField(max_length=15, null=True, blank=True)
-    address = models.CharField(max_length=100, null=True, blank=True)
-    city = models.CharField(max_length=100, null=True, blank=True)
-    state = models.CharField(max_length=100, null=True, blank=True)
     zip = models.CharField(max_length=5)
     late_tools = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.first_name
+        return self.user.first_name
+
+
+
+# class Profile(models.Model):
+#     user = models.OneToOneField(User)
+#     # user_id = models.CharField(max_length=50)
+#     is_member = models.BooleanField(default=True)
+#     is_staff = models.BooleanField(default=False)
+#     date_created = models.DateField()
+#     email = models.CharField(max_length=50)
+#     zip = models.CharField(max_length=5)
+#     late_tools = models.BooleanField(default=False)
+#
+#     def __str__(self):
+#         return self.user.first_name
 
 
 class Tool(models.Model):
@@ -46,33 +60,27 @@ class Tool(models.Model):
     brand = models.CharField(max_length=144)
     model = models.CharField(max_length=144)
     available = models.BooleanField(default=True)
-    user = models.ForeignKey(Borrower, null=True, blank=True)
+    user = models.ForeignKey(User, null=True, blank=True)
     category = models.CharField(choices=category_list, null=True, blank=True, max_length=200)
 
-    # slug = models.SlugField()
-    # borrower = models.CharField(max_length=233, null=True, default=True)  # TODO: LINK TO USERS (see line below)
-    #
-    # # def createSlug(self):
-    # #     self.slug = self.brand.lower() + "-" + self.model.lower() + "-" + self.tool_id
-    # # slug = createSlug()
-    #
-    # def save(self, *args, **kwargs):
-    #     self.string = slugify(str(self.tool_id) + self.brand)
-    #     super(Tool, self).save(*args, **kwargs)
-    #
     def __str__(self):
         return self.description
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(Borrower)
+    user = models.ForeignKey(User)
     tool = models.ForeignKey(Tool)
     comment = models.TextField(max_length=288, blank=True, null=True)
     date = models.DateField()
 
 
-class borrowingHistory(models.Model):
-    user = models.ForeignKey(Borrower)
+class Activity(models.Model):
+    user = models.ForeignKey(User)
     tool = models.ForeignKey(Tool)
-    date_checked_out = models.DateField()
-    date_returned = models.DateField()
+    action = models.CharField(max_length=50)
+    date_out = models.DateField()
+    date_in = models.DateField()
+
+
+# class Activity(models.Model):
+

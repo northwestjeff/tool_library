@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 # from library.forms import NewToolForm, NewUserForm
-from library.models import Borrower, Tool
+from library.models import User, Tool, Comment, Activity
 
 
 def home(request):
@@ -66,16 +66,26 @@ def newTool(request):
 
 
 def newUserForm(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        zip_code = request.POST.get('zip')
+        # User.objects.create(
+        #     user.first_name=first_name,
+        #     user.last_name=last_name,
+        #     email=email,
+        #     zip=zip_code)
     return render(request, 'library/newuser.html', {})
 
 
 def adminViewUser(request):
-    users = Borrower.objects.all()
+    users = User.objects.all()
     return render(request, 'library/users.html', {"users": users})
 
 
 def viewUser(request, id):
-    user = Borrower.objects.get(id=id)
+    user = User.objects.get(id=id)
     return render(request, 'library/user_page.html', {"user": user})
 
 
@@ -91,11 +101,10 @@ def delete(request):
 
 def viewTool(request, tool_id):
     tool = Tool.objects.get(tool_id=tool_id)
-    users = Borrower.objects.all()
+    users = User.objects.all()
     return render(request, 'library/tool.html', {"tool": tool,
                                                  "users": users
                                                  })
-
 
 def updateTool(request, tool_id):
     # tool = request.POST.get("tool_id")
@@ -108,7 +117,7 @@ def checkoutTool(request):
         tool_id = request.POST.get("tool_id")
         tool = Tool.objects.get(tool_id=tool_id)
         user_id = request.POST.get("user")
-        user = Borrower.objects.get(user_id=user_id)
+        user = User.objects.get(user_id=user_id)
         tool.available = False
         tool.user_id = user
         tool.save()
