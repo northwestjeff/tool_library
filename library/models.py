@@ -75,11 +75,13 @@ class Comment(models.Model):
 
 
 class Activity(models.Model):
-    user = models.ForeignKey(User)
-    tool = models.ForeignKey(Tool)
+    member = models.ForeignKey(User, blank=True, null=True)
+    staff = models.CharField(max_length=50, blank=True, null=True)
+    tool = models.ForeignKey(Tool, blank=True, null=True)
     action = models.CharField(max_length=50)
-    date_out = models.DateField()
-    date_in = models.DateField()
+    date_out = models.DateField(blank=True, null=True)
+    date_in = models.DateField(blank=True, null=True)
+
 
 
 # class Activity(models.Model):

@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.core.exceptions import ValidationError
@@ -31,6 +32,13 @@ def add(request):
             parts=parts,
             brand=brand,
             model=model)
+        Activity.objects.create(
+            action='New Tool',
+            date_in=datetime.datetime.now(),
+            # member=user.username,
+            staff=request.user.username,
+            tool=Tool.objects.get(tool_id=tool_id),
+        )
     return HttpResponseRedirect('')
 
 
@@ -88,6 +96,11 @@ def newUserForm(request):
             zip=zip_code,
             is_member=True
         )
+        Activity.objects.create(
+            action='New Member',
+            member=User.objects.get(username=username),
+            date_in=datetime.datetime.now(),
+        )
     return render(request, 'library/newuser.html', {})
 
 
@@ -134,10 +147,19 @@ def checkoutTool(request):
         tool.available = False
         tool.user_id = user
         tool.save()
+        Activity.objects.create(
+            action='Checkout',
+            date_out=datetime.datetime.now(),
+            member=user.username,
+            staff=request.user.username,
+            tool=tool_id
+        )
     return render(request, 'library/home.html', {})
 
 
-
+def viewActivityLog(request):
+    log = Activity.objects.all()
+    return render(request, 'library/activitylog.html', {"log": log})
 
 
     # def post(self, request):

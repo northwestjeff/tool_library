@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <table class="table table-hover">
+            <thead class="thead-light">
+            <tr>
+                <th scope="row">ID</th>
+                <th scope="row">Action</th>
+                <th scope="row">Member</th>
+                <th scope="row">Tool</th>
+                <th scope="row">Date Out</th>
+                <th scope="row">Date In</th>
+                <th scope="row">Staff</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for a in log %}
+                <tr>
+                    <th scope="row">{{ a.id }}</th>
+                    <th scope="row">{{ a.action }}</th>
+                    <th scope="row">{{ a.member.username }}</th>
+                    <th scope="row">{{ a.tool }}</th>
+                    <th scope="row">{{ a.date_out }}</th>
+                    <th scope="row">{{ a.date_in }}</th>
+                    <th scope="row">{{ a.staff }}</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}

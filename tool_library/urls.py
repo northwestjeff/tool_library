@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     # url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
+    url(r'^log/$', library_views.viewActivityLog, name='logout'),
 ]
 
 
