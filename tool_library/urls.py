@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from library import views as library_views
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -32,5 +34,18 @@ urlpatterns = [
     url(r'^add/$', library_views.add, name='add_tool'),
     url(r'^update/$', library_views.update, name='update'),
     url(r'^checkout/$', library_views.checkoutTool, name='checkout'),
-
+    url(r'^login/$', auth_views.login, name='login'),
+    # url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^logout/$', LogoutView.as_view(), name='logout'),
 ]
+
+
+# from django.conf.urls import url
+# from django.contrib import admin
+# from django.contrib.auth import views as auth_views
+#
+# urlpatterns = [
+#     url(r'^login/$', auth_views.login, name='login'),
+#     url(r'^logout/$', auth_views.logout, name='logout'),
+#     url(r'^admin/', admin.site.urls),
+# ]

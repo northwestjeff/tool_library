@@ -29,13 +29,13 @@ category_list = (
 class User(AbstractUser):
     is_member = models.BooleanField(default=True)
     # is_staff = models.BooleanField(default=False)
-    date_created = models.DateField(null=True)
+    date_created = models.DateField(null=True, blank=True)
     email = models.CharField(max_length=50)
     zip = models.CharField(max_length=5)
     late_tools = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.first_name
+        return self.first_name
 
 
 

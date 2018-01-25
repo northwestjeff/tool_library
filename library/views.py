@@ -5,11 +5,17 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 # from library.forms import NewToolForm, NewUserForm
 from library.models import User, Tool, Comment, Activity
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView
 
 
 def home(request):
     tools = Tool.objects.all()
-    return render(request, 'library/home.html', {"tools": tools})
+    if request.user.is_authenticated():
+        current_user = request.user
+        return render(request, 'library/home.html', {"tools": tools,
+                                                     "current_user": current_user})
+    else:
+        return render(request, 'library/home.html', {"tools": tools})
 
 
 def add(request):
@@ -70,12 +76,18 @@ def newUserForm(request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         zip_code = request.POST.get('zip')
-        # User.objects.create(
-        #     user.first_name=first_name,
-        #     user.last_name=last_name,
-        #     email=email,
-        #     zip=zip_code)
+        User.objects.create_user(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            username=username,
+            password=password,
+            zip=zip_code,
+            is_member=True
+        )
     return render(request, 'library/newuser.html', {})
 
 
@@ -106,6 +118,7 @@ def viewTool(request, tool_id):
                                                  "users": users
                                                  })
 
+
 def updateTool(request, tool_id):
     # tool = request.POST.get("tool_id")
     tool = Tool.objects.get(tool_id=tool_id)
@@ -117,12 +130,11 @@ def checkoutTool(request):
         tool_id = request.POST.get("tool_id")
         tool = Tool.objects.get(tool_id=tool_id)
         user_id = request.POST.get("user")
-        user = User.objects.get(user_id=user_id)
+        user = User.objects.get(id=user_id)
         tool.available = False
         tool.user_id = user
         tool.save()
     return render(request, 'library/home.html', {})
-
 
 
 

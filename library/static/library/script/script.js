@@ -51,20 +51,19 @@ $('#check-out-tool-to-user-form').submit(function (e) {
     $.ajax({
         type: 'POST',
         url: '/checkout/',
-        data:{
+        data: {
             csrfmiddlewaretoken: csrftoken,
             tool_id: tool_id,
             user: borrower_id
         },
         success: function () {
-            alert("success" )
+            alert("success")
         },
         error: function () {
             alert("Checkout fail")
         }
     })
 });
-
 
 
 $('#check-out-btn').click(function () {
@@ -105,15 +104,15 @@ $('#new-user').submit(function (e) {
             first_name: $('#first_name').val(),
             last_name: $('#last_name').val(),
             email: $('#email').val(),
-            // address: $('#address').val(),
-            zip: $('#zip').val()
+            username: $('#username').val(),
+            password: $('#password').val(),
+            zip: $('#zip').val(),
         },
         success: function (e) {
-            console.log(e)
+            console.log("success")
         }
     })
-
-})
+});
 
 
 // NEW TOOL

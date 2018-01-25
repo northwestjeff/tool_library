@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from library.models import Tool, Borrower
+from library.models import Tool, Profile
 
 
 # class NewToolForm(ModelForm):

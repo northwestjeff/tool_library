@@ -18,7 +18,7 @@
                 <select id="chooseBorrower" class="form-control">
                     <option selected>Choose...</option>
                     {% for user in users %}
-                        <option value="{{ user.user_id }}">#{{ user.user_id }}: {{ user.first_name }} {{ user.last_name }}</option>
+                        <option value="{{ user.id }}">#{{ user.id }}: {{ user.first_name }} {{ user.last_name }}</option>
                     {% endfor %}
                 </select>
             </div>
