@@ -9,7 +9,8 @@
                 <th scope="row">Activity Log ID</th>
                 <th scope="row">Action</th>
                 <th scope="row">Member</th>
-                <th scope="row">Tool</th>
+                <th scope="row">Tool ID#</th>
+                <th scope="row">Tool Description</th>
                 <th scope="row">Date Out</th>
                 <th scope="row">Date In</th>
                 <th scope="row">Staff</th>
@@ -20,8 +21,9 @@
                 <tr>
                     <th scope="row">{{ a.id }}</th>
                     <th scope="row">{{ a.action }}</th>
-                    <th scope="row">{{ a.member.username }}</th>
-                    <th scope="row">{{ a.tool }}</th>
+                    <th scope="row"><a href="/users/{{ a.member.id }}">{{ a.member.username }}</a></th>
+                    <th scope="row"><a href="/tools/{{ a.tool.tool_id }}">{{ a.tool.tool_id }}</a></th>
+                    <th scope="row">{{ a.tool.description }}</th>
                     <th scope="row">{{ a.date_out }}</th>
                     <th scope="row">{{ a.date_in }}</th>
                     <th scope="row">{{ a.staff }}</th>

@@ -98,6 +98,28 @@ $('#tool-page-return-tool-btn').click(function (e) {
     })
 });
 
+$('#user-page-return-tool-btn').click(function (e) {
+    const borrower_id = $('h3.card-title')[0].id;
+    const tool_id = this.parentElement.parentElement.id;
+    console.log(tool_id);
+    console.log(borrower_id);
+    $.ajax({
+        type: 'POST',
+        url: '/returntool/',
+        data: {
+            csrfmiddlewaretoken: csrftoken,
+            tool_id: tool_id,
+            borrower_id: borrower_id
+        },
+        success: function () {
+            alert("success")
+        },
+        error: function () {
+            alert("return fail")
+        }
+    })
+});
+
 // function editTool(e) {
 //     console.log(e)
 //     $.ajax({

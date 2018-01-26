@@ -3,9 +3,9 @@
 {% block content %}
     <div class="container">
         <div class="card" style="width: 100%;">
-            <img class="card-img-top" src="http://lorejklxel.com/400/200" alt="Card image cap">
+            <img class="card-img-top" src="http://lorempixel.com/400/200" alt="Card image cap">
             <div class="card-body">
-                <h3 class="card-title">User ID #{{ user.id }}</h3>
+                <h3 class="card-title" id="{{ user.id }}">User ID #{{ user.id }}</h3>
                 <h4 class="card-text">{{ user.first_name }} {{ user.last_name }}</h4>
                 <p class="card-text">{{ user.email }}</p>
                 <a href="#" class="btn btn-primary">View Borrowing History</a>
@@ -29,12 +29,13 @@
                     </thead>
                     <tbody>
                     {% for i in tools %}
-                        <tr>
+                        <tr id="{{ i.tool_id }}">
                             <th><a href="/tools/{{ i.tool_id }}">{{ i.tool_id }}</a></th>
                             <th>{{ i.description }}</th>
                             {#                            <th>{{ i.date_out }}</th> TODO#}
                             <th>Placeholder</th>
-                            <th><a href="#" class="btn btn-info" id="user-page-return-tool-button">Return Tool</a></th>
+{#                            <th><a href="#" class="btn btn-info" id="user-page-return-tool-button">Return Tool</a></th>#}
+                            <th id="nnn"><input type="submit" class="btn-warning" id="user-page-return-tool-btn" value="Return Tool"></th>
                         </tr>
 
                     {% endfor %}
