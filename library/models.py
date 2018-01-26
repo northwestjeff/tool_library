@@ -35,22 +35,7 @@ class User(AbstractUser):
     late_tools = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.first_name
-
-
-
-# class Profile(models.Model):
-#     user = models.OneToOneField(User)
-#     # user_id = models.CharField(max_length=50)
-#     is_member = models.BooleanField(default=True)
-#     is_staff = models.BooleanField(default=False)
-#     date_created = models.DateField()
-#     email = models.CharField(max_length=50)
-#     zip = models.CharField(max_length=5)
-#     late_tools = models.BooleanField(default=False)
-#
-#     def __str__(self):
-#         return self.user.first_name
+        return self.first_name  
 
 
 class Tool(models.Model):
@@ -62,6 +47,7 @@ class Tool(models.Model):
     available = models.BooleanField(default=True)
     user = models.ForeignKey(User, null=True, blank=True)
     category = models.CharField(choices=category_list, null=True, blank=True, max_length=200)
+    # TODO IF CHECKED OUT NEED TO ADD A DATE CHECKED OUT FIELD TO TOOL
 
     def __str__(self):
         return self.description

@@ -64,7 +64,7 @@ def update(request):
 
 
 def toolShelf(request):
-    tools = Tool.objects.all()
+    tools = Tool.objects.filter(available=True)
     # tools = []
     return render(request, 'library/tools.html', {"tools": tools})
 
@@ -111,7 +111,10 @@ def adminViewUser(request):
 
 def viewUser(request, id):
     user = User.objects.get(id=id)
-    return render(request, 'library/user_page.html', {"user": user})
+    tools = Tool.objects.filter(user=user)
+    return render(request, 'library/user_page.html', {"user": user,
+                                                      "tools": tools
+                                                      })
 
 
 def delete(request):

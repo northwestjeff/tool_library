@@ -172,3 +172,5 @@ $('#update-tool').submit(function (e) {
 $('.nav-main .dropdown-submenu > a:not(a[href="#"])').on('click', function () {
     self.location = $(this).attr('href');
 });
+
+

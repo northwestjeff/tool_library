@@ -8,7 +8,11 @@
                 <h5 class="card-title">#{{ tool.tool_id }}: {{ tool.brand }} {{ tool.model }}</h5>
                 <p class="card-text">{{ tool.description }}</p>
                 <p class="card-text">{{ tool.user }}</p>
-                <button class="btn btn-primary" id="check-out-btn">Check Out Tool</button>
+                {% if tool.user %}
+                    <button class="btn btn-warning" id="return-tool-btn">Return Tool</button>
+                {% else %}
+                    <button class="btn btn-primary" id="check-out-btn">Check Out Tool</button>
+                {% endif %}
             </div>
         </div>
 
@@ -18,7 +22,8 @@
                 <select id="chooseBorrower" class="form-control">
                     <option selected>Choose...</option>
                     {% for user in users %}
-                        <option value="{{ user.id }}">#{{ user.id }}: {{ user.first_name }} {{ user.last_name }}</option>
+                        <option value="{{ user.id }}">
+                            #{{ user.id }}: {{ user.first_name }} {{ user.last_name }}</option>
                     {% endfor %}
                 </select>
             </div>
