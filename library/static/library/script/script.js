@@ -75,6 +75,29 @@ $('#check-out-btn').click(function () {
     }
 });
 
+
+$('#tool-page-return-tool-btn').click(function (e) {
+    const borrower_id = $('h6.card-text')[0].id;
+    const tool_id = $('div.card-body')[0].id;
+    console.log(tool_id);
+    console.log(borrower_id);
+    $.ajax({
+        type: 'POST',
+        url: '/returntool/',
+        data: {
+            csrfmiddlewaretoken: csrftoken,
+            tool_id: tool_id,
+            borrower_id: borrower_id
+        },
+        success: function () {
+            alert("success")
+        },
+        error: function () {
+            alert("return fail")
+        }
+    })
+});
+
 // function editTool(e) {
 //     console.log(e)
 //     $.ajax({

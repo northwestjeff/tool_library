@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^add/$', library_views.add, name='add_tool'),
     url(r'^update/$', library_views.update, name='update'),
     url(r'^checkout/$', library_views.checkoutTool, name='checkout'),
+    url(r'^returntool/$', library_views.returnTool, name='returntool'),
     url(r'^login/$', auth_views.login, name='login'),
     # url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),

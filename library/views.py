@@ -153,11 +153,29 @@ def checkoutTool(request):
         Activity.objects.create(
             action='Checkout',
             date_out=datetime.datetime.now(),
-            member=user.username,
-            staff=request.user.username,
-            tool=tool_id
+            member=User.objects.get(id=user.id),
+            staff=User.objects.get(id=request.user.id),
+            tool=Tool.objects.get(tool_id=tool_id)
         )
     return render(request, 'library/home.html', {})
+
+def returnTool(request):
+    if request.method == 'POST':
+        tool_id = request.POST.get("tool_id")
+        tool = Tool.objects.get(tool_id=tool_id)
+        borrower_id = request.POST.get("borrower_id")
+        user = User.objects.get(id=borrower_id)
+        tool.available = True
+        tool.user_id = None
+        tool.save()
+        Activity.objects.create(
+            action='Return',
+            date_in=datetime.datetime.now(),
+            member=User.objects.get(id=user.id),
+            staff=User.objects.get(username=request.user.username),
+            tool=Tool.objects.get(tool_id=tool_id)
+        )
+    return render(request, 'string', {})
 
 
 def viewActivityLog(request):

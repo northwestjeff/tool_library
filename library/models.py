@@ -35,7 +35,7 @@ class User(AbstractUser):
     late_tools = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.first_name  
+        return self.first_name
 
 
 class Tool(models.Model):
@@ -45,6 +45,7 @@ class Tool(models.Model):
     brand = models.CharField(max_length=144)
     model = models.CharField(max_length=144)
     available = models.BooleanField(default=True)
+    # date_out = models.DateField(blank=True, null=True)
     user = models.ForeignKey(User, null=True, blank=True)
     category = models.CharField(choices=category_list, null=True, blank=True, max_length=200)
     # TODO IF CHECKED OUT NEED TO ADD A DATE CHECKED OUT FIELD TO TOOL
