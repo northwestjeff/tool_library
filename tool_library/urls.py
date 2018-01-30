@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^toolupdate/(?P<tool_id>[0-9]+)', library_views.updateTool, name='updatetools'),
     url(r'^users/$', library_views.adminViewUser, name='adminviewuser'),
     url(r'^users/(?P<id>[0-9]+)', library_views.viewUser, name='viewuser'),
+    url(r'^account', library_views.viewAccount, name='viewaccount'),
     url(r'^newuser/$', library_views.newUserForm, name='newuserform'),
     url(r'^delete/$', library_views.delete, name='delete_tool'),
     url(r'^add/$', library_views.add, name='add_tool'),

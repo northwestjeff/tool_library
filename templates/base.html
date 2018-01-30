@@ -11,11 +11,12 @@
 </head>
 <div class="container" id="navbar">
     <nav class="navbar navbar-expand-md navbar-fixed-top navbar-ligt" style="background-color: aquamarine">
-        <a href="#" class="navbar-brand">Navbar</a>
-        <li class="nav-item"><a href="#" class="nav-link">My Account</a></li>
+        <a href="/" class="navbar-brand">{{ user.first_name }}</a>
+        <li class="nav-item"><a href="/account" class="nav-link">My Account</a></li>
         <li class="nav-item"><a href="/tools" class="nav-link">Available Tools</a></li>
 
 
+        {% if user.is_staff %}
         <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">Admin Tools</a>
@@ -27,6 +28,7 @@
                 <a href="/log" class="dropdown-item">View Activity Log</a>
             </div>
         </li>
+        {% endif %}
         <li class="nav-item"><a href="/login/" class="nav-link">Login</a></li>
         <li class="nav-item"><a href="/logout/" class="nav-link">Logout</a></li>
 

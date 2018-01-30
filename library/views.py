@@ -116,6 +116,13 @@ def viewUser(request, id):
                                                       "tools": tools
                                                       })
 
+def viewAccount(request):
+    user = User.objects.get(id=request.user.id)
+    tools = Tool.objects.filter(user=user)
+    return render(request, 'library/user_page.html', {"user": user,
+                                                      "tools": tools
+                                                      })
+
 
 def delete(request):
     if request.method == 'POST':
