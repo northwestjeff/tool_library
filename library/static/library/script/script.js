@@ -111,14 +111,30 @@ $('#user-page-return-tool-btn').click(function (e) {
             tool_id: tool_id,
             borrower_id: borrower_id
         },
-        success: function () {
-            alert("success")
+        success: function (data) {
+            if (data.success == true) {
+                setTimeout(function () {
+                    location.reload();
+                }, 2000);
+            }
         },
-        error: function () {
-            alert("return fail")
+        error: function (data) {
+             if (data.success == false) {
+                setTimeout(function () {
+                    location.reload();
+                }, 2000);
+            }
         }
     })
 });
+
+// success: function (data) {
+//     if (data.success == true) { // if true (1)
+//         setTimeout(function () {// wait for 5 secs(2)
+//             location.reload(); // then reload the page.(3)
+//         }, 5000);
+//     }
+// }
 
 // function editTool(e) {
 //     console.log(e)
