@@ -8,10 +8,12 @@
                 <h5 class="card-title">#{{ tool.tool_id }}: {{ tool.brand }} {{ tool.model }}</h5>
                 <p class="card-text">{{ tool.description }}</p>
                 <h6 class="card-text" id="{{ tool.user.id }}">{{ tool.user.id }}</h6>
-                {% if tool.user %}
-                    <button class="btn btn-warning" id="tool-page-return-tool-btn">Return Tool</button>
-                {% else %}
-                    <button class="btn btn-primary" id="check-out-btn">Check Out Tool</button>
+                {% if current_user.is_staff %}
+                    {% if tool.user %}
+                        <button class="btn btn-warning" id="tool-page-return-tool-btn">Return Tool</button>
+                    {% else %}
+                        <button class="btn btn-primary" id="check-out-btn">Check Out Tool</button>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

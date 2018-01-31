@@ -117,9 +117,9 @@ def viewUser(request, id):
                                                       })
 
 def viewAccount(request):
-    user = User.objects.get(id=request.user.id)
-    tools = Tool.objects.filter(user=user)
-    return render(request, 'library/user_page.html', {"user": user,
+    current_user = User.objects.get(id=request.user.id)
+    tools = Tool.objects.filter(user=current_user)
+    return render(request, 'library/user_page.html', {"current_user": current_user,
                                                       "tools": tools
                                                       })
 
@@ -137,8 +137,10 @@ def delete(request):
 def viewTool(request, tool_id):
     tool = Tool.objects.get(tool_id=tool_id)
     users = User.objects.all()
+    current_user = request.user
     return render(request, 'library/tool.html', {"tool": tool,
-                                                 "users": users
+                                                 "users": users,
+                                                 "current_user": current_user
                                                  })
 
 

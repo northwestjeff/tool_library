@@ -11,7 +11,7 @@
 </head>
 <div class="container" id="navbar">
     <nav class="navbar navbar-expand-md navbar-fixed-top navbar-ligt" style="background-color: aquamarine">
-        <a href="/" class="navbar-brand">Welcome, {{ user.first_name }}</a>
+        <a href="/" class="navbar-brand">Welcome: {{ current_user }}</a>
         {% if user %}
             <li class="nav-item"><a href="/account" class="nav-link">My Account</a></li>
         {% endif %}
@@ -31,12 +31,15 @@
             </li>
         {% endif %}
 
-        {% if not user.first_name %}
-        <li class="nav-item"><a href="/login/" class="nav-link">Login</a></li>
-        {% endif %}
-        {% if user.first_name %}
+{#        {% if not user.first_name %}#}
+{#        <li class="nav-item"><a href="/login/" class="nav-link">Login</a></li>#}
+{#        {% endif %}#}
+        {% if current_user %}
             <li class="nav-item"><a href="/logout/" class="nav-link">Logout</a></li>
+        {% else %}
+            <li class="nav-item"><a href="/login/" class="nav-link">Login</a></li>
         {% endif %}
+
 
     </nav>
 </div>
