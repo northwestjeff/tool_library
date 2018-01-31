@@ -20,6 +20,9 @@ function getCookie(name) {
 var csrftoken = getCookie('csrftoken');
 
 function deleteTool(e) {
+    /*
+    Removes an instance of a Tool from the database
+     */
     console.log(e);
     $.ajax({
         type: 'POST',
@@ -68,6 +71,9 @@ $('#check-out-tool-to-user-form').submit(function (e) {
 
 
 $('#check-out-btn').click(function () {
+    /*
+    Displays checkout button on tool page.
+     */
     const formElement = $('#check-out-tool-to-user-form')[0].style;
     if (formElement.display === 'none') {
         formElement.display = 'block'
@@ -78,6 +84,10 @@ $('#check-out-btn').click(function () {
 
 
 $('#tool-page-return-tool-btn').click(function (e) {
+    /*
+    From the tool's individual page,
+    returns a tool to the inventory and makes it available to borrow.
+     */
     const borrower_id = $('h6.card-text')[0].id;
     const tool_id = $('div.card-body')[0].id;
     console.log(tool_id);
@@ -102,6 +112,9 @@ $('#tool-page-return-tool-btn').click(function (e) {
 });
 
 $('#user-page-return-tool-btn').click(function (e) {
+    /*
+    From the member's page, returns a tool back into the inventory
+     */
     const borrower_id = $('h3.card-title')[0].id;
     const tool_id = this.parentElement.parentElement.id;
     // console.log(tool_id);
@@ -123,10 +136,8 @@ $('#user-page-return-tool-btn').click(function (e) {
             // }
         },
         error: function (data) {
-            if (data.success === false) {
-                setTimeout(function () {
-                    location.reload();
-                }, 2000);
+            alert("unable to return");
+            location.reload()
             }
         }
     })
@@ -160,6 +171,9 @@ $('#user-page-return-tool-btn').click(function (e) {
 // }
 
 $('#new-user').submit(function (e) {
+    /*
+    Creates a new member in the database
+     */
     e.preventDefault();
     $.ajax({
         type: 'POST',
@@ -174,7 +188,7 @@ $('#new-user').submit(function (e) {
             zip: $('#zip').val(),
         },
         success: function (e) {
-            console.log("success")
+            location.reload()
         }
     })
 });
@@ -195,17 +209,11 @@ $('#new-tool').submit(function (e) {
             model: $('#model').val()
         },
         success: function (e) {
-            // if (!alert(e + ': SUCCESS tool added to tool shelf')) {
-            // window.location.reload();
-            // }
             alert("Tool created.")
             location.reload()
         },
         error: function (e) {
             console.log(e);
-            // if (!alert(e + ': FAIL tool added to tool shelf')) {
-            //     window.location.reload();
-            // }
         }
     })
 

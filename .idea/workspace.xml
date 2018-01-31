@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfac209e-8147-43e1-ba62-11c121c94f8f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/models.py" afterPath="$PROJECT_DIR$/library/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/static/library/script/script.js" afterPath="$PROJECT_DIR$/library/static/library/script/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/templates/library/tool.html" afterPath="$PROJECT_DIR$/library/templates/library/tool.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/templates/library/user_page.html" afterPath="$PROJECT_DIR$/library/templates/library/user_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/views.py" afterPath="$PROJECT_DIR$/library/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -110,14 +103,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/library/static/library/script/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="96" column="38" lean-forward="false" selection-start-line="96" selection-start-column="38" selection-end-line="96" selection-end-column="38" />
+            <state relative-caret-position="69">
+              <caret line="183" column="45" lean-forward="true" selection-start-line="183" selection-start-column="45" selection-end-line="183" selection-end-column="45" />
               <folding>
-                <element signature="e#3638#3667#0" expanded="false" />
-                <element signature="e#3873#3898#0" expanded="false" />
+                <element signature="e#3888#3917#0" expanded="false" />
+                <element signature="e#4123#4148#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -143,11 +136,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_page.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user_page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/library/templates/library/user_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="43" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+            <state relative-caret-position="105">
+              <caret line="7" column="85" lean-forward="true" selection-start-line="7" selection-start-column="85" selection-end-line="7" selection-end-column="85" />
               <folding>
                 <element signature="e#101#121#0#HTML" expanded="true" />
               </folding>
@@ -233,8 +226,8 @@
         <option value="$PROJECT_DIR$/library/templates/library/tool.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/library/views.py" />
-        <option value="$PROJECT_DIR$/library/static/library/script/script.js" />
         <option value="$PROJECT_DIR$/library/models.py" />
+        <option value="$PROJECT_DIR$/library/static/library/script/script.js" />
       </list>
     </option>
   </component>
@@ -957,17 +950,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/static/library/script/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="96" column="38" lean-forward="false" selection-start-line="96" selection-start-column="38" selection-end-line="96" selection-end-column="38" />
-          <folding>
-            <element signature="e#3638#3667#0" expanded="false" />
-            <element signature="e#3873#3898#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/library/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -980,10 +962,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/library/templates/library/user_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="43" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+        <state relative-caret-position="105">
+          <caret line="7" column="85" lean-forward="true" selection-start-line="7" selection-start-column="85" selection-end-line="7" selection-end-column="85" />
           <folding>
             <element signature="e#101#121#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/static/library/script/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="183" column="45" lean-forward="true" selection-start-line="183" selection-start-column="45" selection-end-line="183" selection-end-column="45" />
+          <folding>
+            <element signature="e#3888#3917#0" expanded="false" />
+            <element signature="e#4123#4148#0" expanded="false" />
           </folding>
         </state>
       </provider>
