@@ -3,22 +3,21 @@
 {% block content %}
     <div class="container">
         <div class="card" style="width: 100%;">
-            <img class="card-img-top" src="http://lorempixel.com/400/200" alt="Card image cap">
+            <img class="card-img-top" src="" alt="Card image cap">
             <div class="card-body">
-                <h3 class="card-title" id="{{ current_user.id }}">User ID #{{ current_user.id }}</h3>
-                <h4 class="card-text">{{ current_user.first_name }} {{ current_user.last_name }}</h4>
+                <h3 class="card-title" id="{{ user.id }}">User ID #{{ user.id }}</h3>
+                <h4 class="card-text">{{ user.first_name }} {{ user.last_name }}</h4>
                 <p class="card-text">{{ current_user.email }}</p>
 {#                <a href="#" class="btn btn-primary">View Borrowing History</a>#}
 
             </div>
-            <div class="card-body" style="display: none">
-                <h3 class="card-title">Current Tools:</h3>
-                <p class="card-text">Tool.</p>
-                <p class="card-text">Tool.</p>
-            </div>
+{#            <div class="card-body" style="display: none">#}
+{#                <h3 class="card-title">Current Tools:</h3>#}
+{#                <p class="card-text">Tool.</p>#}
+{#                <p class="card-text">Tool.</p>#}
+{#            </div>#}
+
             {% if tools %}
-
-
             <div>
                 <h3>Currently Borrowing:</h3>
                 <table class="table table-hover">

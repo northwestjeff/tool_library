@@ -11,13 +11,13 @@
 </head>
 <div class="container" id="navbar">
     <nav class="navbar navbar-expand-md navbar-fixed-top navbar-ligt" style="background-color: aquamarine">
-        <a href="/" class="navbar-brand">Welcome: {{ current_user }}</a>
-        {% if user %}
+        <a href="/" class="navbar-brand">Welcome, {{ current_user.username }}</a>
+        {% if current_user %}
             <li class="nav-item"><a href="/account" class="nav-link">My Account</a></li>
         {% endif %}
         <li class="nav-item"><a href="/tools" class="nav-link">Available Tools</a></li>
 
-        {% if user.is_staff %}
+        {% if current_user.is_staff %}
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Admin Tools</a>

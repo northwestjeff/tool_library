@@ -46,8 +46,8 @@ $('#check-out-tool-to-user-form').submit(function (e) {
     // const submitButton = $('#check-out-submit-button');
     const borrower_id = $('#chooseBorrower').val();
     const tool_id = $('div.card-body')[0].id;
-    console.log(borrower_id);
-    console.log(tool_id);
+    // console.log(borrower_id);
+    // console.log(tool_id);
     $.ajax({
         type: 'POST',
         url: '/checkout/',
@@ -57,7 +57,8 @@ $('#check-out-tool-to-user-form').submit(function (e) {
             user: borrower_id
         },
         success: function () {
-            alert("success")
+            // location.reload()
+            location.href = '/tools/'
         },
         error: function () {
             alert("Checkout fail")
@@ -90,10 +91,12 @@ $('#tool-page-return-tool-btn').click(function (e) {
             borrower_id: borrower_id
         },
         success: function () {
-            alert("success")
+            location.reload()
         },
         error: function () {
-            alert("return fail")
+            alert("unable to return");
+            location.reload()
+
         }
     })
 });
@@ -101,8 +104,8 @@ $('#tool-page-return-tool-btn').click(function (e) {
 $('#user-page-return-tool-btn').click(function (e) {
     const borrower_id = $('h3.card-title')[0].id;
     const tool_id = this.parentElement.parentElement.id;
-    console.log(tool_id);
-    console.log(borrower_id);
+    // console.log(tool_id);
+    // console.log(borrower_id);
     $.ajax({
         type: 'POST',
         url: '/returntool/',
@@ -112,14 +115,15 @@ $('#user-page-return-tool-btn').click(function (e) {
             borrower_id: borrower_id
         },
         success: function (data) {
-            if (data.success == true) {
-                setTimeout(function () {
-                    location.reload();
-                }, 2000);
-            }
+            // if (data.success === true) {
+            //     setTimeout(function () {
+            //         location.reload();
+            //     }, 2000);
+            location.reload()
+            // }
         },
         error: function (data) {
-             if (data.success == false) {
+            if (data.success === false) {
                 setTimeout(function () {
                     location.reload();
                 }, 2000);
@@ -191,15 +195,17 @@ $('#new-tool').submit(function (e) {
             model: $('#model').val()
         },
         success: function (e) {
-            if (!alert(e + ': SUCCESS tool added to tool shelf')) {
-                window.location.reload();
-            }
+            // if (!alert(e + ': SUCCESS tool added to tool shelf')) {
+            // window.location.reload();
+            // }
+            alert("Tool created.")
+            location.reload()
         },
         error: function (e) {
             console.log(e);
-            if (!alert(e + ': FAIL tool added to tool shelf')) {
-                window.location.reload();
-            }
+            // if (!alert(e + ': FAIL tool added to tool shelf')) {
+            //     window.location.reload();
+            // }
         }
     })
 

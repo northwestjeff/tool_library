@@ -39,7 +39,8 @@ def add(request):
             staff=request.user.username,
             tool=Tool.objects.get(tool_id=tool_id),
         )
-    return HttpResponseRedirect('')
+    return render(request, 'library/home.html', {})
+
 
 
 def update(request):
@@ -65,18 +66,25 @@ def update(request):
 
 def toolShelf(request):
     tools = Tool.objects.filter(available=True)
-    # tools = []
-    return render(request, 'library/tools.html', {"tools": tools})
+    current_user = request.user
+    return render(request, 'library/tools.html', {"tools": tools,
+                                                  "current_user": current_user
+                                                  })
 
 
 def editTools(request):
     tools = Tool.objects.all()
-    return render(request, 'library/edittools.html', {'tools': tools})
+    current_user = request.user
+    return render(request, 'library/edittools.html', {'tools': tools,
+                                                      'current_user': current_user})
 
 
 def newTool(request):
     tools = Tool.objects.all()
-    return render(request, 'library/newtool.html', {"tools": tools})
+    current_user = request.user
+    return render(request, 'library/newtool.html', {"tools": tools,
+                                                    "current_user": current_user})
+
 
 
 def newUserForm(request):
@@ -106,15 +114,21 @@ def newUserForm(request):
 
 def adminViewUser(request):
     users = User.objects.all()
-    return render(request, 'library/users.html', {"users": users})
+    current_user = request.user
+    return render(request, 'library/users.html', {"users": users,
+                                                  'current_user': current_user
+                                                  })
 
 
 def viewUser(request, id):
     user = User.objects.get(id=id)
     tools = Tool.objects.filter(user=user)
+    current_user = request.user
     return render(request, 'library/user_page.html', {"user": user,
-                                                      "tools": tools
+                                                      "tools": tools,
+                                                      'current_user': current_user
                                                       })
+
 
 def viewAccount(request):
     current_user = User.objects.get(id=request.user.id)
@@ -157,7 +171,7 @@ def checkoutTool(request):
         user_id = request.POST.get("user")
         user = User.objects.get(id=user_id)
         tool.available = False
-        tool.user_id = user
+        tool.user = user
         tool.save()
         Activity.objects.create(
             action='Checkout',
@@ -166,25 +180,43 @@ def checkoutTool(request):
             staff=User.objects.get(id=request.user.id),
             tool=Tool.objects.get(tool_id=tool_id)
         )
-    return render(request, 'library/home.html', {})
+        data = {
+            "status": "success"
+        }
+        # return render(request, 'library/home.html', {})
+        return JsonResponse(data)
+
 
 def returnTool(request):
     if request.method == 'POST':
-        tool_id = request.POST.get("tool_id")
-        tool = Tool.objects.get(tool_id=tool_id)
-        borrower_id = request.POST.get("borrower_id")
-        user = User.objects.get(id=borrower_id)
-        tool.available = True
-        tool.user_id = None
-        tool.save()
-        Activity.objects.create(
-            action='Return',
-            date_in=datetime.datetime.now(),
-            member=User.objects.get(id=user.id),
-            staff=User.objects.get(username=request.user.username),
-            tool=Tool.objects.get(tool_id=tool_id)
-        )
-    return render(request, 'string', {})
+        try:
+            tool_id = request.POST.get("tool_id")
+            tool = Tool.objects.get(tool_id=tool_id)
+            borrower_id = request.POST.get("borrower_id")
+            user = User.objects.get(id=borrower_id)
+            tool.available = True
+            tool.user_id = None
+            tool.save()
+            Activity.objects.create(
+                action='Return',
+                date_in=datetime.datetime.now(),
+                member=User.objects.get(id=user.id),
+                staff=User.objects.get(username=request.user.username),
+                tool=Tool.objects.get(tool_id=tool_id)
+            )
+            return render(request, 'library/activitylog.html', {})
+            # return render(request, 'library/home.html', {})
+        except Exception:
+            data = {
+                'success': False,
+                'message': "There was an error.",
+                'code': '123',
+            }
+            response = JsonResponse(data)
+            return response
+
+
+            # return render(request, 'library/home.html', {})
 
 
 def viewActivityLog(request):

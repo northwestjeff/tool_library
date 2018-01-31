@@ -45,7 +45,8 @@ class Tool(models.Model):
     brand = models.CharField(max_length=144)
     model = models.CharField(max_length=144)
     available = models.BooleanField(default=True)
-    # date_out = models.DateField(blank=True, null=True)
+    date_out = models.DateField(blank=True, null=True)
+    # date_due = date_out
     user = models.ForeignKey(User, null=True, blank=True)
     category = models.CharField(choices=category_list, null=True, blank=True, max_length=200)
     # TODO IF CHECKED OUT NEED TO ADD A DATE CHECKED OUT FIELD TO TOOL
@@ -70,6 +71,4 @@ class Activity(models.Model):
     date_in = models.DateField(blank=True, null=True)
 
 
-
-# class Activity(models.Model):
 
