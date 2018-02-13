@@ -117,7 +117,7 @@ $('#user-page-return-tool-btn').click(function (e) {
      */
     const borrower_id = $('h3.card-title')[0].id;
     const tool_id = this.parentElement.parentElement.id;
-    // console.log(tool_id);
+    console.log(tool_id);
     // console.log(borrower_id);
     $.ajax({
             type: 'POST',

@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfac209e-8147-43e1-ba62-11c121c94f8f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/library/migrations/0007_auto_20180213_2109.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/library/migrations/0008_auto_20180213_2119.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/models.py" afterPath="$PROJECT_DIR$/library/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/static/library/script/script.js" afterPath="$PROJECT_DIR$/library/static/library/script/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/static/library/style/style.css" afterPath="$PROJECT_DIR$/library/static/library/style/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/templates/library/home.html" afterPath="$PROJECT_DIR$/library/templates/library/home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/templates/library/user_page.html" afterPath="$PROJECT_DIR$/library/templates/library/user_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/views.py" afterPath="$PROJECT_DIR$/library/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -106,11 +98,11 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/library/static/library/script/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="113" column="30" lean-forward="false" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
+            <state relative-caret-position="317">
+              <caret line="120" column="12" lean-forward="false" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
               <folding>
-                <element signature="e#3960#3989#0" expanded="false" />
-                <element signature="e#4195#4220#0" expanded="false" />
+                <element signature="e#3957#3986#0" expanded="false" />
+                <element signature="e#4192#4217#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -151,8 +143,8 @@
       <file leaf-file-name="user_page.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/library/templates/library/user_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="40" column="45" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+            <state relative-caret-position="315">
+              <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -234,9 +226,9 @@
         <option value="$PROJECT_DIR$/library/templates/library/home.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/library/static/library/style/style.css" />
-        <option value="$PROJECT_DIR$/library/static/library/script/script.js" />
         <option value="$PROJECT_DIR$/library/models.py" />
         <option value="$PROJECT_DIR$/library/views.py" />
+        <option value="$PROJECT_DIR$/library/static/library/script/script.js" />
         <option value="$PROJECT_DIR$/library/templates/library/user_page.html" />
       </list>
     </option>
@@ -587,8 +579,8 @@
         <state relative-caret-position="2385">
           <caret line="159" column="34" lean-forward="true" selection-start-line="159" selection-start-column="34" selection-end-line="159" selection-end-column="34" />
           <folding>
-            <element signature="e#3960#3989#0" expanded="false" />
-            <element signature="e#4195#4220#0" expanded="false" />
+            <element signature="e#3957#3986#0" expanded="false" />
+            <element signature="e#4192#4217#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -894,6 +886,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/library/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="36" column="54" lean-forward="false" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/library/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
@@ -906,11 +908,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/library/static/library/script/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="113" column="30" lean-forward="false" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
+        <state relative-caret-position="317">
+          <caret line="120" column="12" lean-forward="false" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
           <folding>
-            <element signature="e#3960#3989#0" expanded="false" />
-            <element signature="e#4195#4220#0" expanded="false" />
+            <element signature="e#3957#3986#0" expanded="false" />
+            <element signature="e#4192#4217#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -941,20 +943,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="36" column="54" lean-forward="false" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/library/templates/library/user_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="40" column="45" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+        <state relative-caret-position="315">
+          <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
           <folding />
         </state>
       </provider>
