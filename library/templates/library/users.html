@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
     <div class="container">
+
         <table class="table table-hover">
             <thead class="thead-light">
             <tr>
@@ -20,7 +20,7 @@
                     <th>{{ user.first_name }} {{ user.last_name }}</th>
                     <th>{{ user.email }}</th>
                     <th>{{ user.zip }}</th>
-                <th>null</th>
+                    <th>null</th>
                 </tr>
             {% endfor %}
             </tbody>
