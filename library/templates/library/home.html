@@ -5,13 +5,17 @@
 
 {% block content %}
 <div class="container">
-    <h3>Welcome: {{ current_user.username }}</h3>
+    {% if current_user %}
+        <h3>Welcome, {{ current_user.first_name }}!</h3>
+    {% else %}
+        <h3>Welcome!</h3>
+    {% endif %}
 
 
     <div style="border: solid 1px black"></div>
-<h3>updates!</h3>
-<p>update 1</p>
-    <p>update 2</p>
+<h3>Tool Library News</h3>
+<p>Did you know we offer great tools and supplies for your upcoming spring cleaning?</p><br>
+    <p>Check us out for your landscaping needs, pressure washing, and painting gear!</p>
 
 </div>
 

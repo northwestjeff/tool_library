@@ -9,9 +9,11 @@
           integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link rel="stylesheet" href={% static 'library/style/style.css' %}>
 </head>
-<div class="container" id="navbar">
-    <nav class="navbar navbar-expand-md navbar-fixed-top navbar-ligt" style="background-color: aquamarine">
-        <a href="/" class="navbar-brand">Welcome, {{ current_user.username }}</a>
+<div  id="navbar">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light" style="background-color: lightgray">
+
+            <a href="/" class="navbar-brand" id="navbar-home">HOME</a>
+
         {% if current_user %}
             <li class="nav-item"><a href="/account" class="nav-link">My Account</a></li>
         {% endif %}
@@ -31,9 +33,9 @@
             </li>
         {% endif %}
 
-{#        {% if not user.first_name %}#}
-{#        <li class="nav-item"><a href="/login/" class="nav-link">Login</a></li>#}
-{#        {% endif %}#}
+        {#        {% if not user.first_name %}#}
+        {#        <li class="nav-item"><a href="/login/" class="nav-link">Login</a></li>#}
+        {#        {% endif %}#}
         {% if current_user %}
             <li class="nav-item"><a href="/logout/" class="nav-link">Logout</a></li>
         {% else %}

@@ -120,27 +120,27 @@ $('#user-page-return-tool-btn').click(function (e) {
     // console.log(tool_id);
     // console.log(borrower_id);
     $.ajax({
-        type: 'POST',
-        url: '/returntool/',
-        data: {
-            csrfmiddlewaretoken: csrftoken,
-            tool_id: tool_id,
-            borrower_id: borrower_id
-        },
-        success: function (data) {
-            // if (data.success === true) {
-            //     setTimeout(function () {
-            //         location.reload();
-            //     }, 2000);
-            location.reload()
-            // }
-        },
-        error: function (data) {
-            alert("unable to return");
-            location.reload()
+            type: 'POST',
+            url: '/returntool/',
+            data: {
+                csrfmiddlewaretoken: csrftoken,
+                tool_id: tool_id,
+                borrower_id: borrower_id
+            },
+            success: function (data) {
+                // if (data.success === true) {
+                //     setTimeout(function () {
+                //         location.reload();
+                //     }, 2000);
+                location.reload()
+                // }
+            },
+            error: function (data) {
+                alert("unable to return");
+                location.reload()
             }
         }
-    })
+    );
 });
 
 // success: function (data) {

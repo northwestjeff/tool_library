@@ -1,10 +1,6 @@
 import datetime
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
-from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
-from django.urls import reverse
-# from library.forms import NewToolForm, NewUserForm
 from library.models import User, Tool, Comment, Activity
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView
 
@@ -172,6 +168,8 @@ def checkoutTool(request):
         user = User.objects.get(id=user_id)
         tool.available = False
         tool.user = user
+        tool.date_out = datetime.datetime.now()
+        tool.date_due = tool.date_out + datetime.timedelta(days=7)
         tool.save()
         Activity.objects.create(
             action='Checkout',

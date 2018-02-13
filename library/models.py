@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser
+from django.utils.timezone import now
+import datetime
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -11,20 +13,6 @@ category_list = (
     ("Yard", "yard"),
     ("Woodworking", 'woodworking'),
     ("Metalworking", "metalworking"))
-
-# class Profile(models.Model):
-#     user = models.OneToOneField(User)
-#     bio = models.TextField(blank=True)
-#     location = models.CharField(max_length=100)
-#     birth_date = models.DateField(null=True, blank=True)
-
-# from django.db import models
-# from django.contrib.auth.models import AbstractUser
-#
-# class User(AbstractUser):
-#     bio = models.TextField(max_length=500, blank=True)
-#     location = models.CharField(max_length=30, blank=True)
-#     birth_date = models.DateField(null=True, blank=True)
 
 class User(AbstractUser):
     is_member = models.BooleanField(default=True)
@@ -46,7 +34,7 @@ class Tool(models.Model):
     model = models.CharField(max_length=144)
     available = models.BooleanField(default=True)
     date_out = models.DateField(blank=True, null=True)
-    # date_due = date_out
+    date_due = models.DateField(blank=True, null=True)
     user = models.ForeignKey(User, null=True, blank=True)
     category = models.CharField(choices=category_list, null=True, blank=True, max_length=200)
     # TODO IF CHECKED OUT NEED TO ADD A DATE CHECKED OUT FIELD TO TOOL
